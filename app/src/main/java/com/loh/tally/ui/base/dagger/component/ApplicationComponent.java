@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import com.loh.tally.TallyApp;
+import com.loh.tally.domain.authentication.AuthenticationManager;
 import com.loh.tally.ui.base.dagger.module.ApplicationModule;
 import com.loh.tally.ui.base.dagger.module.ViewModule;
 import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
@@ -34,5 +35,7 @@ public interface ApplicationComponent {
     Resources resources();
 
     Bus bus();
+
+    AuthenticationManager authenticationManager();
 
 }

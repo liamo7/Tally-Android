@@ -1,5 +1,6 @@
 package com.loh.tally.ui.authentication.presenter;
 
+import com.loh.tally.domain.authentication.AuthenticationManager;
 import com.loh.tally.ui.authentication.event.AuthenticationChoiceEvent;
 import com.loh.tally.ui.authentication.event.AuthenticationLoginEvent;
 import com.loh.tally.ui.authentication.event.AuthenticationRegisterEvent;
@@ -13,7 +14,10 @@ import com.loh.tally.ui.base.presenter.BasePresenter;
  */
 public class AuthenticationPresenter extends BasePresenter<AuthenticationContract.View> implements AuthenticationContract.Presenter {
 
-    public AuthenticationPresenter() {
+    private final AuthenticationManager authenticationManager;
+
+    public AuthenticationPresenter(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
     }
 
     @Override
@@ -31,7 +35,8 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationContrac
         String email = event.getEmail();
         String password = event.getPassword();
 
-        // TODO: 10/03/2017 Post credentials to auth manager
+        authenticationManager.login(email, password);
+
     }
 
     @Override
@@ -39,6 +44,11 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationContrac
         String email = event.getEmail();
         String password = event.getPassword();
 
-        // TODO: 10/03/2017 Post credentials to auth manager
+        authenticationManager.register(email, password);
+    }
+
+    @Override
+    public void navigateToMain() {
+        getView().navigateToMain();
     }
 }

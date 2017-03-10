@@ -19,6 +19,8 @@ public interface AuthenticationContract {
         void navigateToRegister();
 
         void navigateToLogin();
+
+        void navigateToMain();
     }
 
     interface Presenter extends BaseContract.Presenter<View> {
@@ -28,5 +30,7 @@ public interface AuthenticationContract {
         void handleLogin(AuthenticationLoginEvent event);
 
         void handleRegister(AuthenticationRegisterEvent event);
+
+        void navigateToMain();
     }
 }

@@ -2,6 +2,7 @@ package com.loh.tally.ui.base.dagger.module;
 
 import android.support.v7.app.AppCompatActivity;
 
+import com.loh.tally.domain.authentication.AuthenticationManager;
 import com.loh.tally.ui.authentication.adapter.AuthenticationPagerAdapter;
 import com.loh.tally.ui.authentication.presenter.AuthenticationContract;
 import com.loh.tally.ui.authentication.presenter.AuthenticationPresenter;
@@ -40,8 +41,8 @@ public class ViewModule {
     // Auth components
     @Provides
     @ViewScope
-    public AuthenticationContract.Presenter provideAuthenticationPresenter() {
-        return new AuthenticationPresenter();
+    public AuthenticationContract.Presenter provideAuthenticationPresenter(AuthenticationManager authenticationManager) {
+        return new AuthenticationPresenter(authenticationManager);
     }
 
     @Provides
