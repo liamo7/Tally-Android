@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "184436827864",
+    "firebase_url": "https://honours-project-bade2.firebaseio.com",
+    "project_id": "honours-project-bade2",
+    "storage_bucket": "honours-project-bade2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184436827864:android:2835fdaabb922077",
+        "android_client_info": {
+          "package_name": "com.loh.tally"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184436827864-du112kq9jcpplv79r2hodjr2gqrjenpa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.loh.tally",
+            "certificate_hash": "AAD415DF9311F8242D7ACB8C55877C405F4C47AC"
+          }
+        },
+        {
+          "client_id": "184436827864-432dsbhkvtm94rfqhqe2ba2fb5dl1pbm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwvOII7nC7WYFPXPYEn8gIsfVx_zPex0o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184436827864-432dsbhkvtm94rfqhqe2ba2fb5dl1pbm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

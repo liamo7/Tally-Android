@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tally</string>
+    <string name="action_settings">Settings</string>
+    <string name="bottom_nav_logout">Logout</string>
+    <string name="bottom_nav_chats">Chats</string>
+    <string name="bottom_nav_modules">Modules</string>
+</resources>
