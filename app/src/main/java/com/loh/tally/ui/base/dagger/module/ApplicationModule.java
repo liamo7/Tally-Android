@@ -8,6 +8,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.loh.tally.TallyApp;
 import com.loh.tally.domain.authentication.AuthenticationManager;
 import com.loh.tally.domain.authentication.AuthenticationManagerImpl;
+import com.loh.tally.domain.database.modules.ModuleService;
+import com.loh.tally.domain.database.modules.ModuleServiceImpl;
 import com.loh.tally.domain.database.user.UserService;
 import com.loh.tally.domain.database.user.UserServiceImpl;
 import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
@@ -65,6 +67,12 @@ public class ApplicationModule {
     @ApplicationScope
     public UserService provideUserService(FirebaseDatabase firebaseDatabase) {
         return new UserServiceImpl(firebaseDatabase);
+    }
+
+    @Provides
+    @ApplicationScope
+    public ModuleService provideModuleService(FirebaseDatabase firebaseDatabase) {
+        return new ModuleServiceImpl(firebaseDatabase);
     }
 
     @Provides

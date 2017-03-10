@@ -3,6 +3,7 @@ package com.loh.tally.ui.base.dagger.module;
 import android.support.v7.app.AppCompatActivity;
 
 import com.loh.tally.domain.authentication.AuthenticationManager;
+import com.loh.tally.domain.database.modules.ModuleService;
 import com.loh.tally.ui.authentication.adapter.AuthenticationPagerAdapter;
 import com.loh.tally.ui.authentication.presenter.AuthenticationContract;
 import com.loh.tally.ui.authentication.presenter.AuthenticationPresenter;
@@ -10,6 +11,7 @@ import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.main.adapter.MainPagerAdapter;
 import com.loh.tally.ui.main.presenter.MainContract;
 import com.loh.tally.ui.main.presenter.MainPresenter;
+import com.loh.tally.ui.modules.list.adapter.ModuleListAdapter;
 import com.loh.tally.ui.modules.list.presenter.ModuleListContract;
 import com.loh.tally.ui.modules.list.presenter.ModuleListPresenter;
 import com.squareup.otto.Bus;
@@ -69,5 +71,11 @@ public class ViewModule {
     @ViewScope
     public ModuleListContract.Presenter provideModuleListPresenter() {
         return new ModuleListPresenter();
+    }
+
+    @Provides
+    @ViewScope
+    public ModuleListAdapter provideModuleListAdapter(ModuleService moduleService, AuthenticationManager authenticationManager) {
+        return new ModuleListAdapter(moduleService.getModuleEnrolledReference(authenticationManager.getCurrentUser().getUid()));
     }
 }
