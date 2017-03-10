@@ -53,4 +53,11 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationContrac
     public void navigateToMain() {
         getView().navigateToMain();
     }
+
+    @Override
+    public void checkAuthenticationState() {
+        if (authenticationManager.isLoggedIn()) {
+            getView().navigateToMain();
+        }
+    }
 }

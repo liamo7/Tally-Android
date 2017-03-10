@@ -44,8 +44,9 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
         presenter.attach(this);
-
         setupViewPager();
+
+        presenter.checkAuthenticationState();
     }
 
     @Override

@@ -32,5 +32,7 @@ public interface AuthenticationContract {
         void handleRegister(AuthenticationRegisterEvent event);
 
         void navigateToMain();
+
+        void checkAuthenticationState();
     }
 }
