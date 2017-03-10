@@ -1,4 +1,4 @@
-package com.loh.tally.domain.user;
+package com.loh.tally.domain.model;
 
 /**
  * File: User.java

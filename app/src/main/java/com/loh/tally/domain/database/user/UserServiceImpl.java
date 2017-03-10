@@ -3,7 +3,7 @@ package com.loh.tally.domain.database.user;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.loh.tally.domain.user.User;
+import com.loh.tally.domain.model.User;
 import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
 
 /**
