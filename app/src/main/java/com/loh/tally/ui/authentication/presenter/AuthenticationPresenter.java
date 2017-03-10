@@ -1,6 +1,8 @@
 package com.loh.tally.ui.authentication.presenter;
 
 import com.loh.tally.ui.authentication.event.AuthenticationChoiceEvent;
+import com.loh.tally.ui.authentication.event.AuthenticationLoginEvent;
+import com.loh.tally.ui.authentication.event.AuthenticationRegisterEvent;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 
 /**
@@ -22,5 +24,21 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationContrac
         }
 
         getView().navigateToLogin();
+    }
+
+    @Override
+    public void handleLogin(AuthenticationLoginEvent event) {
+        String email = event.getEmail();
+        String password = event.getPassword();
+
+        // TODO: 10/03/2017 Post credentials to auth manager
+    }
+
+    @Override
+    public void handleRegister(AuthenticationRegisterEvent event) {
+        String email = event.getEmail();
+        String password = event.getPassword();
+
+        // TODO: 10/03/2017 Post credentials to auth manager
     }
 }

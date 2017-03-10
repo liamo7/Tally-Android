@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import com.loh.tally.R;
 import com.loh.tally.ui.authentication.view.ChoiceView;
+import com.loh.tally.ui.authentication.view.LoginView;
+import com.loh.tally.ui.authentication.view.RegisterView;
 import com.squareup.otto.Bus;
 
 /**
@@ -21,6 +23,7 @@ public class AuthenticationPagerAdapter extends PagerAdapter {
     public static final int PAGE_REGISTER = 0;
     public static final int PAGE_CHOICE = 1;
     public static final int PAGE_LOGIN = 2;
+
     private final Bus bus;
 
     public AuthenticationPagerAdapter(Bus bus) {
@@ -45,6 +48,8 @@ public class AuthenticationPagerAdapter extends PagerAdapter {
         switch (position) {
 
             case PAGE_REGISTER:
+                view = inflater.inflate(R.layout.pager_authentication_register, container, false);
+                new RegisterView(view, bus);
                 break;
 
             case PAGE_CHOICE:
@@ -53,6 +58,8 @@ public class AuthenticationPagerAdapter extends PagerAdapter {
                 break;
 
             case PAGE_LOGIN:
+                view = inflater.inflate(R.layout.pager_authentication_login, container, false);
+                new LoginView(view, bus);
                 break;
         }
 

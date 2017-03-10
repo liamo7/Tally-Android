@@ -1,6 +1,8 @@
 package com.loh.tally.ui.authentication.presenter;
 
 import com.loh.tally.ui.authentication.event.AuthenticationChoiceEvent;
+import com.loh.tally.ui.authentication.event.AuthenticationLoginEvent;
+import com.loh.tally.ui.authentication.event.AuthenticationRegisterEvent;
 import com.loh.tally.ui.base.presenter.BaseContract;
 
 /**
@@ -22,5 +24,9 @@ public interface AuthenticationContract {
     interface Presenter extends BaseContract.Presenter<View> {
 
         void handleChoice(AuthenticationChoiceEvent event);
+
+        void handleLogin(AuthenticationLoginEvent event);
+
+        void handleRegister(AuthenticationRegisterEvent event);
     }
 }

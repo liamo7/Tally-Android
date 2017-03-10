@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 import com.loh.tally.R;
 import com.loh.tally.ui.authentication.adapter.AuthenticationPagerAdapter;
 import com.loh.tally.ui.authentication.event.AuthenticationChoiceEvent;
+import com.loh.tally.ui.authentication.event.AuthenticationLoginEvent;
+import com.loh.tally.ui.authentication.event.AuthenticationRegisterEvent;
 import com.loh.tally.ui.authentication.presenter.AuthenticationContract;
 import com.loh.tally.ui.base.activity.BaseActivity;
 import com.squareup.otto.Subscribe;
@@ -42,9 +44,9 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
     }
 
     private void setupViewPager() {
+        viewPager.setAdapter(pagerAdapter);
         viewPager.setOffscreenPageLimit(2);
         viewPager.setCurrentItem(AuthenticationPagerAdapter.PAGE_CHOICE);
-        viewPager.setAdapter(pagerAdapter);
     }
 
     @Subscribe
@@ -52,15 +54,15 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
         presenter.handleChoice(event);
     }
 
-//    @Subscribe
-//    public void onLoginButtonClicked() {
-//
-//    }
-//
-//    @Subscribe
-//    public void onRegisterButtonClicked() {
-//
-//    }
+    @Subscribe
+    public void onLoginButtonClicked(AuthenticationLoginEvent event) {
+        presenter.handleLogin(event);
+    }
+
+    @Subscribe
+    public void onRegisterButtonClicked(AuthenticationRegisterEvent event) {
+        presenter.handleRegister(event);
+    }
 
     @Override
     public void navigateToRegister() {
