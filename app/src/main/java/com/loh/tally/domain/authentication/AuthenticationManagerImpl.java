@@ -2,6 +2,7 @@ package com.loh.tally.domain.authentication;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.loh.tally.domain.database.user.UserService;
 import com.loh.tally.ui.authentication.event.AuthenticationErrorEvent;
 import com.loh.tally.ui.authentication.event.AuthenticationLogoutEvent;
 import com.loh.tally.ui.authentication.event.AuthenticationSuccessEvent;
@@ -19,10 +20,12 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
 
     private final FirebaseAuth firebaseAuth;
     private final Bus bus;
+    private final UserService userService;
 
-    public AuthenticationManagerImpl(FirebaseAuth firebaseAuth, Bus bus) {
+    public AuthenticationManagerImpl(FirebaseAuth firebaseAuth, Bus bus, UserService userService) {
         this.firebaseAuth = firebaseAuth;
         this.bus = bus;
+        this.userService = userService;
     }
 
     @Override
@@ -42,11 +45,13 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
                 .addOnFailureListener(authResult -> bus.post(new AuthenticationErrorEvent(authResult.getMessage())));
     }
 
-    // TODO: 10/03/2017 Create USER entry within USER db
     @Override
     public void register(String email, String password) {
         firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnSuccessListener(authResult -> bus.post(new AuthenticationSuccessEvent()))
+                .addOnSuccessListener(authResult -> {
+                    userService.createUserEntry(authResult.getUser());
+                    bus.post(new AuthenticationSuccessEvent());
+                })
                 .addOnFailureListener(authResult -> bus.post(new AuthenticationErrorEvent(authResult.getMessage())));
     }
 

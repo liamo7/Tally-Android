@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.loh.tally.TallyApp;
 import com.loh.tally.domain.authentication.AuthenticationManager;
 import com.loh.tally.domain.authentication.AuthenticationManagerImpl;
+import com.loh.tally.domain.database.user.UserService;
+import com.loh.tally.domain.database.user.UserServiceImpl;
 import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
 import com.squareup.otto.Bus;
 
@@ -54,7 +57,19 @@ public class ApplicationModule {
 
     @Provides
     @ApplicationScope
-    public AuthenticationManager provideAuthenticationManager(FirebaseAuth firebaseAuth, Bus bus) {
-        return new AuthenticationManagerImpl(firebaseAuth, bus);
+    public FirebaseDatabase provideFirebaseDatabase() {
+        return FirebaseDatabase.getInstance();
+    }
+
+    @Provides
+    @ApplicationScope
+    public UserService provideUserService(FirebaseDatabase firebaseDatabase) {
+        return new UserServiceImpl(firebaseDatabase);
+    }
+
+    @Provides
+    @ApplicationScope
+    public AuthenticationManager provideAuthenticationManager(FirebaseAuth firebaseAuth, Bus bus, UserService userService) {
+        return new AuthenticationManagerImpl(firebaseAuth, bus, userService);
     }
 }
