@@ -9,6 +9,7 @@ import com.loh.tally.R;
 import com.loh.tally.ui.authentication.view.ChoiceView;
 import com.loh.tally.ui.authentication.view.LoginView;
 import com.loh.tally.ui.authentication.view.RegisterView;
+import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.squareup.otto.Bus;
 
 /**
@@ -17,7 +18,7 @@ import com.squareup.otto.Bus;
  * Created By: Liam O'Hanlon
  * Description: TODO:
  */
-
+@ViewScope
 public class AuthenticationPagerAdapter extends PagerAdapter {
 
     public static final int PAGE_REGISTER = 0;

@@ -1,5 +1,6 @@
 package com.loh.tally.ui.chat.list.presenter;
 
+import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 
 /**
@@ -9,6 +10,7 @@ import com.loh.tally.ui.base.presenter.BasePresenter;
  * Description: Delegates communication from {@link com.loh.tally.ui.chat.list.fragment.ChatListFragment}
  * and the business logic.
  */
+@ViewScope
 public class ChatListPresenter extends BasePresenter<ChatListContract.View> implements ChatListContract.Presenter {
 
     public ChatListPresenter() {

@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.chat.list.fragment.ChatListFragment;
 import com.loh.tally.ui.modules.list.fragment.ModuleListFragment;
 
@@ -13,7 +14,7 @@ import com.loh.tally.ui.modules.list.fragment.ModuleListFragment;
  * Created By: Liam O'Hanlon
  * Description: TODO:
  */
-
+@ViewScope
 public class MainPagerAdapter extends FragmentPagerAdapter {
 
     public MainPagerAdapter(FragmentManager fm) {

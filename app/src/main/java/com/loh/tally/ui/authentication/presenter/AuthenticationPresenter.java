@@ -4,6 +4,7 @@ import com.loh.tally.domain.authentication.AuthenticationManager;
 import com.loh.tally.ui.authentication.event.AuthenticationChoiceEvent;
 import com.loh.tally.ui.authentication.event.AuthenticationLoginEvent;
 import com.loh.tally.ui.authentication.event.AuthenticationRegisterEvent;
+import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 
 /**
@@ -12,6 +13,7 @@ import com.loh.tally.ui.base.presenter.BasePresenter;
  * Created By: Liam O'Hanlon
  * Description: TODO:
  */
+@ViewScope
 public class AuthenticationPresenter extends BasePresenter<AuthenticationContract.View> implements AuthenticationContract.Presenter {
 
     private final AuthenticationManager authenticationManager;

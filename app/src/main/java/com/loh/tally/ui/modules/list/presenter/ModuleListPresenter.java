@@ -1,5 +1,6 @@
 package com.loh.tally.ui.modules.list.presenter;
 
+import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 
 /**
@@ -9,6 +10,7 @@ import com.loh.tally.ui.base.presenter.BasePresenter;
  * Description: Delegates communication from {@link com.loh.tally.ui.modules.list.fragment.ModuleListFragment}
  * and the business logic.
  */
+@ViewScope
 public class ModuleListPresenter extends BasePresenter<ModuleListContract.View> implements ModuleListContract.Presenter {
 
     public ModuleListPresenter() {

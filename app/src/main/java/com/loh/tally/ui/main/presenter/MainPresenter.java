@@ -1,5 +1,6 @@
 package com.loh.tally.ui.main.presenter;
 
+import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 
 /**
@@ -8,6 +9,7 @@ import com.loh.tally.ui.base.presenter.BasePresenter;
  * Created By: Liam O'Hanlon
  * Description: Communicates with business logic for the functionality of {@link com.loh.tally.ui.main.activity.MainActivity}.
  */
+@ViewScope
 public class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter {
 
     public MainPresenter() {
