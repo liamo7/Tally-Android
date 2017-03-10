@@ -1,5 +1,6 @@
 package com.loh.tally.ui.main.presenter;
 
+import com.loh.tally.domain.authentication.AuthenticationManager;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 
@@ -12,7 +13,10 @@ import com.loh.tally.ui.base.presenter.BasePresenter;
 @ViewScope
 public class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter {
 
-    public MainPresenter() {
+    private final AuthenticationManager authenticationManager;
+
+    public MainPresenter(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
     }
 
     @Override
@@ -27,6 +31,6 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
 
     @Override
     public void logout() {
-        // TODO: 10/03/2017 Add logout
+        authenticationManager.logout();
     }
 }

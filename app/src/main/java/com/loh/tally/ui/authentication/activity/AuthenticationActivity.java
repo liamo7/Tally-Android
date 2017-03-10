@@ -1,5 +1,7 @@
 package com.loh.tally.ui.authentication.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
@@ -10,11 +12,13 @@ import com.loh.tally.ui.authentication.adapter.AuthenticationPagerAdapter;
 import com.loh.tally.ui.authentication.event.AuthenticationChoiceEvent;
 import com.loh.tally.ui.authentication.event.AuthenticationErrorEvent;
 import com.loh.tally.ui.authentication.event.AuthenticationLoginEvent;
+import com.loh.tally.ui.authentication.event.AuthenticationLogoutEvent;
 import com.loh.tally.ui.authentication.event.AuthenticationRegisterEvent;
 import com.loh.tally.ui.authentication.event.AuthenticationSuccessEvent;
 import com.loh.tally.ui.authentication.presenter.AuthenticationContract;
 import com.loh.tally.ui.base.activity.BaseActivity;
 import com.loh.tally.ui.main.activity.MainActivity;
+import com.loh.tally.util.IntentUtil;
 import com.squareup.otto.Subscribe;
 
 import javax.inject.Inject;
@@ -28,6 +32,12 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
 
     @Inject AuthenticationContract.Presenter presenter;
     @Inject AuthenticationPagerAdapter pagerAdapter;
+
+    public static Intent getStartingIntent(Context context, Bundle bundle) {
+        Intent intent = new Intent(context, AuthenticationActivity.class);
+        intent.putExtra(IntentUtil.BUNDLE_KEY, bundle);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +57,12 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
     @Override
     protected void inject() {
         getViewComponent().inject(this);
+    }
+
+    @Subscribe
+    @Override
+    public void onSignOutEvent(AuthenticationLogoutEvent event) {
+        handleSignOut();
     }
 
     private void setupViewPager() {

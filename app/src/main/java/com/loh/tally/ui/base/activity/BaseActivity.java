@@ -1,5 +1,6 @@
 package com.loh.tally.ui.base.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -8,9 +9,12 @@ import android.support.v7.widget.Toolbar;
 
 import com.loh.tally.R;
 import com.loh.tally.TallyApp;
+import com.loh.tally.ui.authentication.activity.AuthenticationActivity;
+import com.loh.tally.ui.authentication.event.AuthenticationLogoutEvent;
 import com.loh.tally.ui.base.dagger.component.ViewComponent;
 import com.loh.tally.ui.base.dagger.module.ViewModule;
 import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
 
 import javax.inject.Inject;
 
@@ -92,5 +96,17 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected TallyApp getTallyApp() {
         return (TallyApp) getApplication();
+    }
+
+    @Subscribe
+    public abstract void onSignOutEvent(AuthenticationLogoutEvent event);
+
+    protected void handleSignOut() {
+        Intent intent = AuthenticationActivity.getStartingIntent(this, null)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(intent);
+        finish();
     }
 }

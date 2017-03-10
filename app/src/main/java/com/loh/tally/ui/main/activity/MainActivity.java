@@ -8,11 +8,13 @@ import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
 import com.loh.tally.R;
+import com.loh.tally.ui.authentication.event.AuthenticationLogoutEvent;
 import com.loh.tally.ui.base.activity.BaseActivity;
 import com.loh.tally.ui.main.adapter.MainPagerAdapter;
 import com.loh.tally.ui.main.presenter.MainContract;
 import com.loh.tally.ui.views.NonSwipeableViewPager;
 import com.loh.tally.util.IntentUtil;
+import com.squareup.otto.Subscribe;
 
 import javax.inject.Inject;
 
@@ -67,6 +69,12 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
     @Override
     protected void inject() {
         getViewComponent().inject(this);
+    }
+
+    @Subscribe
+    @Override
+    public void onSignOutEvent(AuthenticationLogoutEvent event) {
+        handleSignOut();
     }
 
     private void setupBottomNavigation() {
