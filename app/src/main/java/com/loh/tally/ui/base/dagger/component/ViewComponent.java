@@ -1,5 +1,6 @@
 package com.loh.tally.ui.base.dagger.component;
 
+import com.loh.tally.ui.authentication.activity.AuthenticationActivity;
 import com.loh.tally.ui.base.activity.BaseActivity;
 import com.loh.tally.ui.base.dagger.module.ViewModule;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
@@ -20,6 +21,8 @@ import dagger.Subcomponent;
 public interface ViewComponent {
 
     void inject(BaseActivity activity);
+
+    void inject(AuthenticationActivity activity);
 
     void inject(MainActivity activity);
 

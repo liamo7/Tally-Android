@@ -4,4 +4,9 @@
     <string name="bottom_nav_logout">Logout</string>
     <string name="bottom_nav_chats">Chats</string>
     <string name="bottom_nav_modules">Modules</string>
+    <string name="title_activity_authentication">Authentication</string>
+    <string name="button_register">Register</string>
+    <string name="button_sign_in">Sign In</string>
+    <string name="email_input_edit_hint">Email Address</string>
+    <string name="password_input_edit_hint">Password</string>
 </resources>

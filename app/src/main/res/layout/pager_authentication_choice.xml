@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:gravity="center"
+        android:padding="@dimen/authentication_container_padding">
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="@dimen/authentication_button_width"
+            android:layout_height="@dimen/authentication_button_height"
+            android:layout_marginBottom="@dimen/authentication_button_margin_vertical"
+            android:layout_marginTop="@dimen/authentication_button_margin_vertical"
+            android:text="@string/button_register"
+            android:theme="@style/TallyTheme.Button"/>
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="@dimen/authentication_button_width"
+            android:layout_height="@dimen/authentication_button_height"
+            android:layout_below="@id/registerButton"
+            android:layout_marginBottom="@dimen/authentication_button_margin_vertical"
+            android:layout_marginTop="@dimen/authentication_button_margin_vertical"
+            android:text="@string/button_sign_in"
+            android:theme="@style/TallyTheme.Button"/>
+
+    </RelativeLayout>
+
+</ScrollView>
