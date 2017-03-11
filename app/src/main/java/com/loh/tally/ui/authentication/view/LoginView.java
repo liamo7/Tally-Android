@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.loh.tally.R;
 import com.loh.tally.ui.authentication.event.AuthenticationLoginEvent;
+import com.loh.tally.ui.base.event.ValidationErrorEvent;
 import com.squareup.otto.Bus;
 
 import butterknife.BindView;
@@ -35,6 +36,12 @@ public class LoginView {
     protected void onLoginButtonClicked() {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            String message = view.getContext().getString(R.string.authentication_blank_error);
+            bus.post(new ValidationErrorEvent(message));
+            return;
+        }
 
         bus.post(new AuthenticationLoginEvent(email, password));
     }

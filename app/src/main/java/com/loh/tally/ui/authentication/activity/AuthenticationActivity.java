@@ -17,6 +17,7 @@ import com.loh.tally.ui.authentication.event.AuthenticationRegisterEvent;
 import com.loh.tally.ui.authentication.event.AuthenticationSuccessEvent;
 import com.loh.tally.ui.authentication.presenter.AuthenticationContract;
 import com.loh.tally.ui.base.activity.BaseActivity;
+import com.loh.tally.ui.base.event.ValidationErrorEvent;
 import com.loh.tally.ui.main.activity.MainActivity;
 import com.loh.tally.util.IntentUtil;
 import com.squareup.otto.Subscribe;
@@ -95,6 +96,11 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
     @Subscribe
     public void onAuthenticationSuccess(AuthenticationSuccessEvent event) {
         presenter.navigateToMain();
+    }
+
+    @Subscribe
+    public void onValidationErrorEvent(ValidationErrorEvent event) {
+        Snackbar.make(container, event.getMessage(), Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
