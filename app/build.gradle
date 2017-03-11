@@ -57,5 +57,7 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+    compile group: 'org.ocpsoft.prettytime', name: 'prettytime', version: '1.0.8.Final'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -3,6 +3,7 @@ package com.loh.tally.ui.base.dagger.module;
 import android.support.v7.app.AppCompatActivity;
 
 import com.loh.tally.domain.authentication.AuthenticationManager;
+import com.loh.tally.domain.database.chat.ChatService;
 import com.loh.tally.domain.database.modules.ModuleService;
 import com.loh.tally.ui.authentication.adapter.AuthenticationPagerAdapter;
 import com.loh.tally.ui.authentication.presenter.AuthenticationContract;
@@ -91,7 +92,9 @@ public class ViewModule {
 
     @Provides
     @ViewScope
-    public ChatListAdapter provideChatListAdapter(ModuleService moduleService, AuthenticationManager authenticationManager) {
-        return new ChatListAdapter(moduleService.getModuleEnrolledReference(authenticationManager.getCurrentUser().getUid()));
+    public ChatListAdapter provideChatListAdapter(ModuleService moduleService, AuthenticationManager authenticationManager, ChatService chatService) {
+        final String userID = authenticationManager.getCurrentUser().getUid();
+        return new ChatListAdapter(moduleService.getModuleEnrolledReference(userID),
+                moduleService.getModuleCreatedReference(userID), chatService.getRootRef());
     }
 }

@@ -5,7 +5,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.loh.tally.R;
+import com.loh.tally.domain.model.ChatMessage;
 import com.loh.tally.domain.model.Module;
+import com.loh.tally.util.PrettyDateUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,10 +32,13 @@ public class ChatListViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Module module) {
-        String msg = "Hey guys, last message sent";
-        String timeMsg = "2 mins ago";
-
         name.setText(module.getName());
+    }
+
+    public void bind(ChatMessage message) {
+        String msg = message.getMessage();
+        String timeMsg = PrettyDateUtil.getPretty(message.getDate());
+
         lastMessage.setText(container.getContext().getString(R.string.chat_list_last_message, msg));
         time.setText(timeMsg);
     }

@@ -11,4 +11,6 @@
     <string name="password_input_edit_hint">Password</string>
     <string name="authentication_blank_error">Make sure that you have entered an email address and password.</string>
     <string name="chat_list_last_message">Last Message: %1$s</string>
+    <string name="pretty_time_soon">Soon</string>
+    <string name="pretty_time_one_hour">an hour ago</string>
 </resources>

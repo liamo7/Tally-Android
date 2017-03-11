@@ -8,6 +8,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.loh.tally.TallyApp;
 import com.loh.tally.domain.authentication.AuthenticationManager;
 import com.loh.tally.domain.authentication.AuthenticationManagerImpl;
+import com.loh.tally.domain.database.chat.ChatService;
+import com.loh.tally.domain.database.chat.ChatServiceImpl;
 import com.loh.tally.domain.database.modules.ModuleService;
 import com.loh.tally.domain.database.modules.ModuleServiceImpl;
 import com.loh.tally.domain.database.user.UserService;
@@ -73,6 +75,12 @@ public class ApplicationModule {
     @ApplicationScope
     public ModuleService provideModuleService(FirebaseDatabase firebaseDatabase) {
         return new ModuleServiceImpl(firebaseDatabase);
+    }
+
+    @Provides
+    @ApplicationScope
+    public ChatService provideChatService(FirebaseDatabase firebaseDatabase) {
+        return new ChatServiceImpl(firebaseDatabase);
     }
 
     @Provides
