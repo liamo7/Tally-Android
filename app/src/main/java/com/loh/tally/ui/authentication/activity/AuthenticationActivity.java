@@ -90,7 +90,7 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
 
     @Subscribe
     public void onAuthenticationError(AuthenticationErrorEvent event) {
-        Snackbar.make(container, event.getMessage(), Snackbar.LENGTH_SHORT);
+        Snackbar.make(container, event.getMessage(), Snackbar.LENGTH_SHORT).show();
     }
 
     @Subscribe
