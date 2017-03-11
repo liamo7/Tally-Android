@@ -2,9 +2,7 @@ package com.loh.tally.ui.chat.list.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.loh.tally.R;
 import com.loh.tally.ui.base.fragment.BaseFragment;
@@ -24,13 +22,6 @@ public class ChatListFragment extends BaseFragment {
         return fragment;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.fragment_chat_list, container, false);
-        return layout;
-    }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -44,5 +35,10 @@ public class ChatListFragment extends BaseFragment {
     @Override
     protected void inject() {
         getViewComponent().inject(this);
+    }
+
+    @Override
+    protected int getFragmentLayout() {
+        return R.layout.fragment_chat_list;
     }
 }

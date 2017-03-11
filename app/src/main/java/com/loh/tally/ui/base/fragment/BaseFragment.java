@@ -4,10 +4,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.loh.tally.TallyApp;
 import com.loh.tally.ui.base.dagger.component.ViewComponent;
 import com.loh.tally.ui.base.dagger.module.ViewModule;
+
+import butterknife.ButterKnife;
 
 /**
  * File: BaseFragment.java
@@ -23,7 +28,25 @@ public abstract class BaseFragment extends Fragment {
         inject();
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(getFragmentLayout(), container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        injectViews(view);
+    }
+
+    private void injectViews(View view) {
+        ButterKnife.bind(this, view);
+    }
+
     protected abstract void inject();
+
+    protected abstract int getFragmentLayout();
 
     protected ViewComponent getViewComponent() {
         return getTallyApp()

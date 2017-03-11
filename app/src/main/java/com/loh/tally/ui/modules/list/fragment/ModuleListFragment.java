@@ -5,9 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.loh.tally.R;
 import com.loh.tally.ui.base.fragment.BaseFragment;
@@ -17,8 +15,6 @@ import com.loh.tally.ui.modules.list.presenter.ModuleListContract;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import timber.log.Timber;
 
 /**
  * File: ModuleListFragment.java
@@ -45,21 +41,11 @@ public class ModuleListFragment extends BaseFragment implements ModuleListContra
         super.onCreate(savedInstanceState);
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = LayoutInflater.from(getContext()).inflate(R.layout.fragment_module_list, container, false);
-        ButterKnife.bind(this, layout);
-        presenter.attach(this);
-        return layout;
-    }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-        recyclerView.setAdapter(listAdapter);
-        Timber.d(listAdapter.getItemCount() + "");
+        super.onViewCreated(view, savedInstanceState);
+        presenter.attach(this);
+        setupRecycler();
     }
 
     @Override
@@ -76,5 +62,16 @@ public class ModuleListFragment extends BaseFragment implements ModuleListContra
     @Override
     protected void inject() {
         getViewComponent().inject(this);
+    }
+
+    @Override
+    protected int getFragmentLayout() {
+        return R.layout.fragment_module_list;
+    }
+
+    private void setupRecycler() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        recyclerView.setAdapter(listAdapter);
     }
 }
