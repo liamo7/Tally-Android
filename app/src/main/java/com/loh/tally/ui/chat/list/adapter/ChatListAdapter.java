@@ -11,9 +11,6 @@ import com.loh.tally.domain.model.ChatMessage;
 import com.loh.tally.domain.model.Module;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import timber.log.Timber;
 
 /**
@@ -48,8 +45,6 @@ public class ChatListAdapter extends FirebaseRecyclerAdapter<Module, ChatListVie
 
     @Override
     protected void populateViewHolder(ChatListViewHolder viewHolder, Module model, int position) {
-        List<ChatMessage> messageList = new ArrayList<>();
-
         chatRef = chatRef.child(this.getRef(position).getKey());
         chatRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -59,7 +54,6 @@ public class ChatListAdapter extends FirebaseRecyclerAdapter<Module, ChatListVie
                     Timber.d(dataSnapshot.getChildrenCount() + "");
                     for (DataSnapshot d : ds.getChildren()) {
                         ChatMessage message = ds.getValue(ChatMessage.class);
-                        messageList.add(message);
                         viewHolder.bind(message);
                     }
 
