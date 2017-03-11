@@ -12,6 +12,8 @@ import com.loh.tally.domain.database.chat.ChatService;
 import com.loh.tally.domain.database.chat.ChatServiceImpl;
 import com.loh.tally.domain.database.modules.ModuleService;
 import com.loh.tally.domain.database.modules.ModuleServiceImpl;
+import com.loh.tally.domain.database.presentation.PresentationService;
+import com.loh.tally.domain.database.presentation.PresentationServiceImpl;
 import com.loh.tally.domain.database.user.UserService;
 import com.loh.tally.domain.database.user.UserServiceImpl;
 import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
@@ -81,6 +83,12 @@ public class ApplicationModule {
     @ApplicationScope
     public ChatService provideChatService(FirebaseDatabase firebaseDatabase) {
         return new ChatServiceImpl(firebaseDatabase);
+    }
+
+    @Provides
+    @ApplicationScope
+    public PresentationService providePresentationService(FirebaseDatabase firebaseDatabase) {
+        return new PresentationServiceImpl(firebaseDatabase);
     }
 
     @Provides

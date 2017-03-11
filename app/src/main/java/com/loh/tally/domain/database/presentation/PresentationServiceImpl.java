@@ -37,21 +37,21 @@ public class PresentationServiceImpl implements PresentationService {
 
     @Override
     public DatabaseReference getPresentationReference(String presentationID) {
-        return this.presentationRef = this.presentationRef.child(presentationID);
+        return this.presentationRef.child(presentationID);
     }
 
     @Override
     public DatabaseReference getPresentationModuleReference(String moduleID) {
-        return this.presentationModuleRef = this.presentationModuleRef.child(moduleID);
+        return this.presentationModuleRef.child(moduleID);
     }
 
     @Override
     public DatabaseReference getPollsReference(String presentationID) {
-        return this.pollRef = this.pollRef.child(presentationID);
+        return this.pollRef.child(presentationID);
     }
 
     @Override
     public DatabaseReference getPollResponsesReference(String pollID) {
-        return this.pollResponseRef = this.pollResponseRef.child(pollID);
+        return this.pollResponseRef.child(pollID);
     }
 }

@@ -20,8 +20,11 @@ public class PresentationPagerAdapter extends FragmentPagerAdapter {
     public static final int FRAGMENT_PRESENTATIONS = 0;
     public static final int FRAGMENT_CHAT = 1;
 
-    public PresentationPagerAdapter(FragmentManager fm) {
+    private String moduleID;
+
+    public PresentationPagerAdapter(FragmentManager fm, String moduleID) {
         super(fm);
+        this.moduleID = moduleID;
     }
 
     @Override
@@ -30,7 +33,7 @@ public class PresentationPagerAdapter extends FragmentPagerAdapter {
         switch (position) {
 
             case FRAGMENT_PRESENTATIONS:
-                return PresentationListFragment.newInstance();
+                return PresentationListFragment.newInstance(moduleID);
 
             case FRAGMENT_CHAT:
                 return ChatDetailFragment.newInstance();
@@ -42,5 +45,9 @@ public class PresentationPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return 2;
+    }
+
+    public void setModuleID(String moduleID) {
+        this.moduleID = moduleID;
     }
 }

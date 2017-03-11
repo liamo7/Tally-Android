@@ -1,15 +1,11 @@
 package com.loh.tally.ui.presentations.list.adapter;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.loh.tally.R;
 import com.loh.tally.domain.model.Presentation;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
-
-import butterknife.ButterKnife;
 
 /**
  * File: PresentationListAdapter.java
@@ -18,9 +14,11 @@ import butterknife.ButterKnife;
  * Description: TODO:
  */
 @ViewScope
-public class PresentationListAdapter extends FirebaseRecyclerAdapter<Presentation, PresentationListAdapter.PresentationListViewHolder> {
+public class PresentationListAdapter extends FirebaseRecyclerAdapter<Presentation, PresentationListViewHolder> {
 
-    public PresentationListAdapter(Query ref) {
+    private OnPresentationItemClickListener listener;
+
+    public PresentationListAdapter(DatabaseReference ref) {
         this(Presentation.class, R.layout.item_presentation_list, PresentationListViewHolder.class, ref);
     }
 
@@ -32,20 +30,20 @@ public class PresentationListAdapter extends FirebaseRecyclerAdapter<Presentatio
      * @param ref             The Firebase location to watch for data changes. Can also be a slice of a location, using some
      *                        combination of {@code limit()}, {@code startAt()}, and {@code endAt()}.
      */
-    private PresentationListAdapter(Class<Presentation> modelClass, int modelLayout, Class<PresentationListViewHolder> viewHolderClass, Query ref) {
+    public PresentationListAdapter(Class<Presentation> modelClass, int modelLayout, Class<PresentationListViewHolder> viewHolderClass, Query ref) {
         super(modelClass, modelLayout, viewHolderClass, ref);
     }
 
     @Override
     protected void populateViewHolder(PresentationListViewHolder viewHolder, Presentation model, int position) {
-
+        viewHolder.bind(model, listener);
     }
 
-    static class PresentationListViewHolder extends RecyclerView.ViewHolder {
+    public void setOnPresentationClickListener(OnPresentationItemClickListener listener) {
+        this.listener = listener;
+    }
 
-        public PresentationListViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-        }
+    interface OnPresentationItemClickListener {
+        void onPresentationClicked(Presentation presentation);
     }
 }

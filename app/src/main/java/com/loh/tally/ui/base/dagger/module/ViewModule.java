@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.loh.tally.domain.authentication.AuthenticationManager;
 import com.loh.tally.domain.database.chat.ChatService;
 import com.loh.tally.domain.database.modules.ModuleService;
+import com.loh.tally.domain.database.presentation.PresentationService;
 import com.loh.tally.ui.authentication.adapter.AuthenticationPagerAdapter;
 import com.loh.tally.ui.authentication.presenter.AuthenticationContract;
 import com.loh.tally.ui.authentication.presenter.AuthenticationPresenter;
@@ -18,12 +19,12 @@ import com.loh.tally.ui.main.presenter.MainPresenter;
 import com.loh.tally.ui.modules.list.adapter.ModuleListAdapter;
 import com.loh.tally.ui.modules.list.presenter.ModuleListContract;
 import com.loh.tally.ui.modules.list.presenter.ModuleListPresenter;
-import com.loh.tally.ui.presentations.list.adapter.PresentationListAdapter;
 import com.loh.tally.ui.presentations.list.presenter.PresentationListContract;
 import com.loh.tally.ui.presentations.list.presenter.PresentationListPresenter;
 import com.loh.tally.ui.presentations.main.adapter.PresentationPagerAdapter;
 import com.loh.tally.ui.presentations.main.presenter.PresentationContract;
 import com.loh.tally.ui.presentations.main.presenter.PresentationPresenter;
+import com.loh.tally.util.IntentUtil;
 import com.squareup.otto.Bus;
 
 import dagger.Module;
@@ -114,19 +115,14 @@ public class ViewModule {
     @Provides
     @ViewScope
     public PresentationPagerAdapter providePresentationPagerAdapter(AppCompatActivity activity) {
-        return new PresentationPagerAdapter(activity.getSupportFragmentManager());
+        return new PresentationPagerAdapter(activity.getSupportFragmentManager(),
+                activity.getIntent().getBundleExtra(IntentUtil.BUNDLE_KEY).getString(IntentUtil.INTENT_MODULE_KEY));
     }
 
     // Presentation List components
     @Provides
     @ViewScope
-    public PresentationListContract.Presenter providePresentationListPresenter() {
-        return new PresentationListPresenter();
-    }
-
-    @Provides
-    @ViewScope
-    public PresentationListAdapter providePresentationListAdapter() {
-        return new PresentationListAdapter(null);
+    public PresentationListContract.Presenter providePresentationListPresenter(PresentationService presentationService) {
+        return new PresentationListPresenter(presentationService);
     }
 }
