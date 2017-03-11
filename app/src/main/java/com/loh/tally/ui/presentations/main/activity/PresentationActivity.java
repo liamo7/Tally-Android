@@ -14,6 +14,7 @@ import com.loh.tally.ui.presentations.main.adapter.PresentationPagerAdapter;
 import com.loh.tally.ui.presentations.main.presenter.PresentationContract;
 import com.loh.tally.ui.views.NonSwipeableViewPager;
 import com.loh.tally.util.IntentUtil;
+import com.squareup.otto.Subscribe;
 
 import javax.inject.Inject;
 
@@ -54,7 +55,7 @@ public class PresentationActivity extends BaseActivity implements PresentationCo
         getViewComponent().inject(this);
     }
 
-    @Override
+    @Subscribe @Override
     public void onSignOutEvent(AuthenticationLogoutEvent event) {
         handleSignOut();
     }
