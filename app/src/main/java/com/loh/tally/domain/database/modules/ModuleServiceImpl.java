@@ -44,8 +44,7 @@ public class ModuleServiceImpl implements ModuleService {
 
     @Override
     public void enrollOnModule(String moduleID, String userID) {
-        moduleReference.child(moduleID);
-        moduleReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        moduleReference.child(moduleID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Module module = dataSnapshot.getValue(Module.class);
