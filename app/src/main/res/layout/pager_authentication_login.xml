@@ -59,7 +59,7 @@
             android:layout_below="@id/passwordWrapper"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/authentication_button_margin_vertical"
-            android:layout_marginTop="@dimen/authentication_button_height"
+            android:layout_marginTop="@dimen/authentication_button_margin_vertical"
             android:text="@string/button_sign_in"
             android:theme="@style/TallyTheme.Button" />
 
