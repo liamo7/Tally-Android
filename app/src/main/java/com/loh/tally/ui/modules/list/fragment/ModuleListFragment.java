@@ -57,6 +57,7 @@ public class ModuleListFragment extends BaseFragment implements ModuleListContra
     @Override
     public void onDestroy() {
         super.onDestroy();
+        listAdapter.cleanup();
     }
 
     @Override
