@@ -1,24 +1,27 @@
-package com.loh.tally.ui.modules.list.adapter;
+package com.loh.tally.ui.presentations.list.adapter;
+
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.Query;
 import com.loh.tally.R;
-import com.loh.tally.domain.model.Module;
+import com.loh.tally.domain.model.Presentation;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 
+import butterknife.ButterKnife;
+
 /**
- * File: ModuleListAdapter.java
- * Date: 10/03/2017
+ * File: PresentationListAdapter.java
+ * Date: 11/03/2017
  * Created By: Liam O'Hanlon
  * Description: TODO:
  */
 @ViewScope
-public class ModuleListAdapter extends FirebaseRecyclerAdapter<Module, ModuleViewHolder> {
+public class PresentationListAdapter extends FirebaseRecyclerAdapter<Presentation, PresentationListAdapter.PresentationListViewHolder> {
 
-    private ModuleViewHolder.OnModuleItemClickListener listener;
-
-    public ModuleListAdapter(Query ref) {
-        this(Module.class, R.layout.item_module_list, ModuleViewHolder.class, ref);
+    public PresentationListAdapter(Query ref) {
+        this(Presentation.class, R.layout.item_presentation_list, PresentationListViewHolder.class, ref);
     }
 
     /**
@@ -29,16 +32,20 @@ public class ModuleListAdapter extends FirebaseRecyclerAdapter<Module, ModuleVie
      * @param ref             The Firebase location to watch for data changes. Can also be a slice of a location, using some
      *                        combination of {@code limit()}, {@code startAt()}, and {@code endAt()}.
      */
-    public ModuleListAdapter(Class<Module> modelClass, int modelLayout, Class<ModuleViewHolder> viewHolderClass, Query ref) {
+    private PresentationListAdapter(Class<Presentation> modelClass, int modelLayout, Class<PresentationListViewHolder> viewHolderClass, Query ref) {
         super(modelClass, modelLayout, viewHolderClass, ref);
     }
 
     @Override
-    protected void populateViewHolder(ModuleViewHolder viewHolder, Module model, int position) {
-        viewHolder.bind(model, listener);
+    protected void populateViewHolder(PresentationListViewHolder viewHolder, Presentation model, int position) {
+
     }
 
-    public void setOnItemClickListener(ModuleViewHolder.OnModuleItemClickListener listener) {
-        this.listener = listener;
+    static class PresentationListViewHolder extends RecyclerView.ViewHolder {
+
+        public PresentationListViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
     }
 }

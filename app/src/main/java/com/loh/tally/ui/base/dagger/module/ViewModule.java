@@ -18,6 +18,12 @@ import com.loh.tally.ui.main.presenter.MainPresenter;
 import com.loh.tally.ui.modules.list.adapter.ModuleListAdapter;
 import com.loh.tally.ui.modules.list.presenter.ModuleListContract;
 import com.loh.tally.ui.modules.list.presenter.ModuleListPresenter;
+import com.loh.tally.ui.presentations.list.adapter.PresentationListAdapter;
+import com.loh.tally.ui.presentations.list.presenter.PresentationListContract;
+import com.loh.tally.ui.presentations.list.presenter.PresentationListPresenter;
+import com.loh.tally.ui.presentations.main.adapter.PresentationPagerAdapter;
+import com.loh.tally.ui.presentations.main.presenter.PresentationContract;
+import com.loh.tally.ui.presentations.main.presenter.PresentationPresenter;
 import com.squareup.otto.Bus;
 
 import dagger.Module;
@@ -96,5 +102,31 @@ public class ViewModule {
         final String userID = authenticationManager.getCurrentUser().getUid();
         return new ChatListAdapter(moduleService.getModuleEnrolledReference(userID),
                 moduleService.getModuleCreatedReference(userID), chatService.getRootRef());
+    }
+
+    // Presentation Components
+    @Provides
+    @ViewScope
+    public PresentationContract.Presenter providePresentationPresenter(AuthenticationManager authenticationManager) {
+        return new PresentationPresenter(authenticationManager);
+    }
+
+    @Provides
+    @ViewScope
+    public PresentationPagerAdapter providePresentationPagerAdapter(AppCompatActivity activity) {
+        return new PresentationPagerAdapter(activity.getSupportFragmentManager());
+    }
+
+    // Presentation List components
+    @Provides
+    @ViewScope
+    public PresentationListContract.Presenter providePresentationListPresenter() {
+        return new PresentationListPresenter();
+    }
+
+    @Provides
+    @ViewScope
+    public PresentationListAdapter providePresentationListAdapter() {
+        return new PresentationListAdapter(null);
     }
 }

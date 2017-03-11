@@ -26,6 +26,8 @@ public class ChatListViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.lastMessage) TextView lastMessage;
     @BindView(R.id.time) TextView time;
 
+    private String lastMessageStr;
+
     public ChatListViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
@@ -39,6 +41,7 @@ public class ChatListViewHolder extends RecyclerView.ViewHolder {
         String msg = message.getMessage();
         String timeMsg = PrettyDateUtil.getPretty(message.getDate());
 
+        // TODO: 11/03/2017 Fix container.getContext() leaking
         lastMessage.setText(container.getContext().getString(R.string.chat_list_last_message, msg));
         time.setText(timeMsg);
     }

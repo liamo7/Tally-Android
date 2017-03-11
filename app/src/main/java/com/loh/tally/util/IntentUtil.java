@@ -14,4 +14,8 @@ public class IntentUtil {
     }
 
     public static String BUNDLE_KEY = "bundle";
+
+    public static String INTENT_MODULE_KEY = "module_key";
+
+    public static String INTENT_PRESENTATION_PAGE = "presentation_activity_page";
 }

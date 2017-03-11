@@ -8,9 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.loh.tally.R;
+import com.loh.tally.domain.model.Module;
 import com.loh.tally.ui.base.fragment.BaseFragment;
 import com.loh.tally.ui.modules.list.adapter.ModuleListAdapter;
+import com.loh.tally.ui.modules.list.adapter.ModuleViewHolder;
 import com.loh.tally.ui.modules.list.presenter.ModuleListContract;
+import com.loh.tally.ui.presentations.main.activity.PresentationActivity;
+import com.loh.tally.ui.presentations.main.adapter.PresentationPagerAdapter;
+import com.loh.tally.util.IntentUtil;
 
 import javax.inject.Inject;
 
@@ -22,7 +27,7 @@ import butterknife.BindView;
  * Created By: Liam O'Hanlon
  * Description: Handles the displaying of modules to the user.
  */
-public class ModuleListFragment extends BaseFragment implements ModuleListContract.View {
+public class ModuleListFragment extends BaseFragment implements ModuleListContract.View, ModuleViewHolder.OnModuleItemClickListener {
 
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
 
@@ -71,8 +76,25 @@ public class ModuleListFragment extends BaseFragment implements ModuleListContra
     }
 
     private void setupRecycler() {
+        listAdapter.setOnItemClickListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(listAdapter);
+    }
+
+    @Override
+    public void onModuleClicked(Module module) {
+        Bundle bundle = new Bundle();
+        bundle.putString(IntentUtil.INTENT_MODULE_KEY, module.getId());
+        bundle.putInt(IntentUtil.INTENT_PRESENTATION_PAGE, PresentationPagerAdapter.FRAGMENT_PRESENTATIONS);
+        startActivity(PresentationActivity.getStartingIntent(getActivity(), bundle));
+    }
+
+    @Override
+    public void onChatClicked(String moduleID) {
+        Bundle bundle = new Bundle();
+        bundle.putString(IntentUtil.INTENT_MODULE_KEY, moduleID);
+        bundle.putInt(IntentUtil.INTENT_PRESENTATION_PAGE, PresentationPagerAdapter.FRAGMENT_CHAT);
+        startActivity(PresentationActivity.getStartingIntent(getActivity(), bundle));
     }
 }

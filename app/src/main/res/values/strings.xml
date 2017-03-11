@@ -13,4 +13,7 @@
     <string name="chat_list_last_message">Last Message: %1$s</string>
     <string name="pretty_time_soon">Soon</string>
     <string name="pretty_time_one_hour">an hour ago</string>
+    <string name="title_activity_presentation">Presentations</string>
+    <string name="bottom_nav_presentations">Presentations</string>
+    <string name="bottom_nav_chat">Chat</string>
 </resources>

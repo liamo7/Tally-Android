@@ -24,6 +24,15 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.presentations.main.activity.PresentationActivity"
+            android:label="@string/title_activity_presentation"
+            android:parentActivityName=".ui.main.activity.MainActivity"
+            android:theme="@style/TallyTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.loh.tally.ui.main.activity.MainActivity"/>
+        </activity>
     </application>
 
 </manifest>

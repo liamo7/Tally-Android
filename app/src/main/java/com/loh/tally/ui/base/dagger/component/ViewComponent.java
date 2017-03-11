@@ -4,9 +4,12 @@ import com.loh.tally.ui.authentication.activity.AuthenticationActivity;
 import com.loh.tally.ui.base.activity.BaseActivity;
 import com.loh.tally.ui.base.dagger.module.ViewModule;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
+import com.loh.tally.ui.chat.detail.fragment.ChatDetailFragment;
 import com.loh.tally.ui.chat.list.fragment.ChatListFragment;
 import com.loh.tally.ui.main.activity.MainActivity;
 import com.loh.tally.ui.modules.list.fragment.ModuleListFragment;
+import com.loh.tally.ui.presentations.list.fragment.PresentationListFragment;
+import com.loh.tally.ui.presentations.main.activity.PresentationActivity;
 
 import dagger.Subcomponent;
 
@@ -26,7 +29,13 @@ public interface ViewComponent {
 
     void inject(MainActivity activity);
 
+    void inject(PresentationActivity activity);
+
     void inject(ModuleListFragment fragment);
 
     void inject(ChatListFragment fragment);
+
+    void inject(ChatDetailFragment fragment);
+
+    void inject(PresentationListFragment fragment);
 }
