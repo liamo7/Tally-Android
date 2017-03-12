@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
         setupViewPager();
 
         if (savedInstanceState == null) {
-            presenter.navigateToModules();
+            //presenter.navigateToModules();
         }
     }
 

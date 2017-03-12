@@ -1,5 +1,7 @@
 package com.loh.tally.ui.modules.list.adapter;
 
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,11 +37,16 @@ public class ModuleViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(Module module, OnModuleItemClickListener listener) {
         String firstLetter = module.getName().substring(0, 1);
-        TextDrawable textDrawable = TextDrawable.builder().buildRound(firstLetter, ColorGenerator.MATERIAL.getRandomColor());
+        int color = ColorGenerator.MATERIAL.getRandomColor();
+        TextDrawable textDrawable = TextDrawable.builder().buildRound(firstLetter, color);
         circle.setImageDrawable(textDrawable);
 
         name.setText(module.getName());
         code.setText(module.getCode());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            chatView.setBackgroundTintList(ColorStateList.valueOf(color));
+        }
 
         container.setOnClickListener(v -> {
             if (listener != null) {

@@ -20,6 +20,8 @@ import com.loh.tally.ui.base.dagger.scope.ViewScope;
 @ViewScope
 public class ChatListAdapter extends FirebaseRecyclerAdapter<Module, ChatListViewHolder> {
 
+    private OnChatListItemClickedListener listener;
+
     private DatabaseReference createdRef;
     private DatabaseReference chatRef;
 
@@ -59,6 +61,14 @@ public class ChatListAdapter extends FirebaseRecyclerAdapter<Module, ChatListVie
             }
         });
 
-        viewHolder.bind(model);
+        viewHolder.bind(model, listener);
+    }
+
+    public void setOnChatListItemClickedListener(OnChatListItemClickedListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnChatListItemClickedListener {
+        void onChatItemClicked(Module module);
     }
 }

@@ -55,13 +55,18 @@ public class PresentationActivity extends BaseActivity implements PresentationCo
         getViewComponent().inject(this);
     }
 
-    @Subscribe @Override
+    @Subscribe
+    @Override
     public void onSignOutEvent(AuthenticationLogoutEvent event) {
         handleSignOut();
     }
 
     private void setupViewpager() {
         viewPager.setAdapter(listAdapter);
+
+        int page = getIntent().getBundleExtra(IntentUtil.BUNDLE_KEY)
+                .getInt(IntentUtil.INTENT_PRESENTATION_PAGE, PresentationPagerAdapter.FRAGMENT_PRESENTATIONS);
+        viewPager.setCurrentItem(page);
     }
 
     private void setupBottomNavigation() {

@@ -37,11 +37,17 @@ public class ChatListViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void bind(Module module) {
+    public void bind(Module module, ChatListAdapter.OnChatListItemClickedListener listener) {
         String firstLetter = module.getName().substring(0, 1);
         TextDrawable textDrawable = TextDrawable.builder().buildRound(firstLetter, ColorGenerator.MATERIAL.getRandomColor());
         circle.setImageDrawable(textDrawable);
         name.setText(module.getName());
+
+        container.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onChatItemClicked(module);
+            }
+        });
     }
 
     public void bind(ChatMessage message) {
