@@ -45,8 +45,7 @@ public class ChatListAdapter extends FirebaseRecyclerAdapter<Module, ChatListVie
 
     @Override
     protected void populateViewHolder(ChatListViewHolder viewHolder, Module model, int position) {
-        chatRef = chatRef.child(this.getRef(position).getKey());
-        chatRef.addValueEventListener(new ValueEventListener() {
+        chatRef.child(this.getRef(position).getKey()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
