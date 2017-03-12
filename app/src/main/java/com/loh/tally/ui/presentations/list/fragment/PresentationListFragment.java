@@ -8,9 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.loh.tally.R;
+import com.loh.tally.domain.model.Presentation;
 import com.loh.tally.ui.base.fragment.BaseFragment;
 import com.loh.tally.ui.presentations.list.adapter.PresentationListAdapter;
 import com.loh.tally.ui.presentations.list.presenter.PresentationListContract;
+import com.loh.tally.ui.presentations.poll.activity.PollActivity;
 import com.loh.tally.util.IntentUtil;
 
 import javax.inject.Inject;
@@ -24,7 +26,7 @@ import butterknife.BindView;
  * Description: TODO:
  */
 
-public class PresentationListFragment extends BaseFragment implements PresentationListContract.View {
+public class PresentationListFragment extends BaseFragment implements PresentationListContract.View, PresentationListAdapter.OnPresentationItemClickListener {
 
     @Inject PresentationListContract.Presenter presenter;
 
@@ -72,6 +74,7 @@ public class PresentationListFragment extends BaseFragment implements Presentati
 
     private void setupRecycler() {
         listAdapter = new PresentationListAdapter(presenter.getPresentationModulesReference());
+        listAdapter.setOnPresentationClickListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(listAdapter);
@@ -80,5 +83,12 @@ public class PresentationListFragment extends BaseFragment implements Presentati
     @Override
     public String getModuleID() {
         return getArguments().getString(IntentUtil.INTENT_MODULE_KEY, null);
+    }
+
+    @Override
+    public void onPresentationClicked(Presentation presentation) {
+        Bundle bundle = new Bundle();
+        bundle.putString(IntentUtil.INTENT_PRESENTATION_KEY, presentation.getId());
+        startActivity(PollActivity.getStartingIntent(getActivity(), bundle));
     }
 }

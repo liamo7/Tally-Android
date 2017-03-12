@@ -36,6 +36,7 @@ public class PresentationListAdapter extends FirebaseRecyclerAdapter<Presentatio
 
     @Override
     protected void populateViewHolder(PresentationListViewHolder viewHolder, Presentation model, int position) {
+        model.setId(this.getRef(position).getKey());
         viewHolder.bind(model, listener);
     }
 
@@ -43,7 +44,7 @@ public class PresentationListAdapter extends FirebaseRecyclerAdapter<Presentatio
         this.listener = listener;
     }
 
-    interface OnPresentationItemClickListener {
+    public interface OnPresentationItemClickListener {
         void onPresentationClicked(Presentation presentation);
     }
 }

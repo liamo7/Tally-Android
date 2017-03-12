@@ -32,7 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Nullable @BindView(R.id.toolbar) Toolbar toolbar;
 
-    @Inject Bus eventbus;
+    @Inject protected Bus eventbus;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

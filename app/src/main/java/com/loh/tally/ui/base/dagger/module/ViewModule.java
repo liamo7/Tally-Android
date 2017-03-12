@@ -1,5 +1,6 @@
 package com.loh.tally.ui.base.dagger.module;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.loh.tally.domain.authentication.AuthenticationManager;
@@ -26,6 +27,9 @@ import com.loh.tally.ui.presentations.list.presenter.PresentationListPresenter;
 import com.loh.tally.ui.presentations.main.adapter.PresentationPagerAdapter;
 import com.loh.tally.ui.presentations.main.presenter.PresentationContract;
 import com.loh.tally.ui.presentations.main.presenter.PresentationPresenter;
+import com.loh.tally.ui.presentations.poll.adapter.PollPagerAdapter;
+import com.loh.tally.ui.presentations.poll.presenter.PollContract;
+import com.loh.tally.ui.presentations.poll.presenter.PollPresenter;
 import com.loh.tally.util.IntentUtil;
 import com.squareup.otto.Bus;
 
@@ -124,8 +128,10 @@ public class ViewModule {
     @Provides
     @ViewScope
     public PresentationPagerAdapter providePresentationPagerAdapter(AppCompatActivity activity) {
-        return new PresentationPagerAdapter(activity.getSupportFragmentManager(),
-                activity.getIntent().getBundleExtra(IntentUtil.BUNDLE_KEY).getString(IntentUtil.INTENT_MODULE_KEY));
+        Bundle bundle = activity.getIntent().getBundleExtra(IntentUtil.BUNDLE_KEY);
+        String moduleKey = bundle != null ? bundle.getString(IntentUtil.INTENT_MODULE_KEY, null) : null;
+
+        return new PresentationPagerAdapter(activity.getSupportFragmentManager(), moduleKey);
     }
 
     // Presentation List components
@@ -133,5 +139,18 @@ public class ViewModule {
     @ViewScope
     public PresentationListContract.Presenter providePresentationListPresenter(PresentationService presentationService) {
         return new PresentationListPresenter(presentationService);
+    }
+
+    // Poll Components
+    @Provides
+    @ViewScope
+    public PollPagerAdapter providePollPagerAdapter(AppCompatActivity appCompatActivity) {
+        return new PollPagerAdapter(appCompatActivity.getSupportFragmentManager());
+    }
+
+    @Provides
+    @ViewScope
+    public PollContract.Presenter providePollPresenter(PresentationService presentationService, Bus bus) {
+        return new PollPresenter(presentationService, bus);
     }
 }
