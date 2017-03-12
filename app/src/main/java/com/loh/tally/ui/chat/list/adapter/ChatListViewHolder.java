@@ -2,8 +2,11 @@ package com.loh.tally.ui.chat.list.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.loh.tally.R;
 import com.loh.tally.domain.model.ChatMessage;
 import com.loh.tally.domain.model.Module;
@@ -25,6 +28,7 @@ public class ChatListViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.name) TextView name;
     @BindView(R.id.lastMessage) TextView lastMessage;
     @BindView(R.id.time) TextView time;
+    @BindView(R.id.circle) ImageView circle;
 
     private String lastMessageStr;
 
@@ -34,6 +38,9 @@ public class ChatListViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Module module) {
+        String firstLetter = module.getName().substring(0, 1);
+        TextDrawable textDrawable = TextDrawable.builder().buildRound(firstLetter, ColorGenerator.MATERIAL.getRandomColor());
+        circle.setImageDrawable(textDrawable);
         name.setText(module.getName());
     }
 

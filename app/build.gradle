@@ -58,6 +58,10 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 
+    // text drawable circle letter
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
+    // pretty time
     compile group: 'org.ocpsoft.prettytime', name: 'prettytime', version: '1.0.8.Final'
 }
 apply plugin: 'com.google.gms.google-services'
