@@ -7,7 +7,6 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,7 +50,6 @@ public class ChatDetailFragment extends BaseFragment implements ChatDetailContra
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
     }
 
     @Override
@@ -120,5 +118,12 @@ public class ChatDetailFragment extends BaseFragment implements ChatDetailContra
     protected void onSendButtonClicked() {
         presenter.sendMessage();
         recyclerView.smoothScrollToPosition(chatAdapter.getItemCount());
+        getActivity().findViewById(R.id.bottomNavView).setVisibility(View.VISIBLE);
+    }
+
+    @OnClick(R.id.input)
+    protected void onInputClicked() {
+        // dirty fix as bottomnav is moved up when edittext is in focus
+        getActivity().findViewById(R.id.bottomNavView).setVisibility(View.GONE);
     }
 }
