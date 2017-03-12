@@ -3,6 +3,7 @@ package com.loh.tally.ui.presentations.poll.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 
@@ -27,6 +28,7 @@ import timber.log.Timber;
 public class PollActivity extends BaseActivity implements PollContract.View, AsyncCallback<List<Poll>> {
 
     @BindView(R.id.viewpager) ViewPager viewPager;
+    @BindView(R.id.chatFab) FloatingActionButton fab;
 
     @Inject PollContract.Presenter presenter;
     @Inject PollPagerAdapter pollPagerAdapter;

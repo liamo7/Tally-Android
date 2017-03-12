@@ -1,5 +1,8 @@
 package com.loh.tally.domain.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,7 +13,7 @@ import java.util.List;
  * Description: TODO:
  */
 
-public class Poll {
+public class Poll implements Parcelable {
 
     private String id;
     private String question;
@@ -72,4 +75,44 @@ public class Poll {
     public void setPresID(String presID) {
         this.presID = presID;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.question);
+        dest.writeString(this.questionType);
+        dest.writeString(this.chartType);
+        dest.writeByte(this.profanityFilter ? (byte) 1 : (byte) 0);
+        dest.writeStringList(this.choices);
+        dest.writeSerializable(this.submission);
+        dest.writeString(this.presID);
+    }
+
+    protected Poll(Parcel in) {
+        this.id = in.readString();
+        this.question = in.readString();
+        this.questionType = in.readString();
+        this.chartType = in.readString();
+        this.profanityFilter = in.readByte() != 0;
+        this.choices = in.createStringArrayList();
+        this.submission = (HashMap<String, Boolean>) in.readSerializable();
+        this.presID = in.readString();
+    }
+
+    public static final Creator<Poll> CREATOR = new Creator<Poll>() {
+        @Override
+        public Poll createFromParcel(Parcel source) {
+            return new Poll(source);
+        }
+
+        @Override
+        public Poll[] newArray(int size) {
+            return new Poll[size];
+        }
+    };
 }

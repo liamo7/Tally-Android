@@ -33,15 +33,16 @@ public class PollPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         //PollType pollType = PollType.valueOf(polls.get(position).getQuestionType());
         //Timber.d(pollType.getType());
-        String pollType = polls.get(position).getQuestionType();
+        Poll poll = polls.get(position);
+        String pollType = poll.getQuestionType();
 
         switch (pollType) {
 
             case "Multiple Choice":
-                return MultipleChoiceFragment.newInstance();
+                return MultipleChoiceFragment.newInstance(poll);
 
             case "Open":
-                return OpenFormFragment.newInstance();
+                return OpenFormFragment.newInstance(poll);
 
             default:
                 break;

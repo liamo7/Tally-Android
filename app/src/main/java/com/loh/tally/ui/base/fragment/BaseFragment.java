@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import com.loh.tally.TallyApp;
 import com.loh.tally.ui.base.dagger.component.ViewComponent;
 import com.loh.tally.ui.base.dagger.module.ViewModule;
+import com.squareup.otto.Bus;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
@@ -21,6 +24,8 @@ import butterknife.ButterKnife;
  * Description: Handles creation of view components for {@link Fragment}.
  */
 public abstract class BaseFragment extends Fragment {
+
+    @Inject protected Bus eventbus;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

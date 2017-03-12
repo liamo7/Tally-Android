@@ -27,7 +27,13 @@ import com.loh.tally.ui.presentations.list.presenter.PresentationListPresenter;
 import com.loh.tally.ui.presentations.main.adapter.PresentationPagerAdapter;
 import com.loh.tally.ui.presentations.main.presenter.PresentationContract;
 import com.loh.tally.ui.presentations.main.presenter.PresentationPresenter;
+import com.loh.tally.ui.presentations.poll.adapter.MultipleChoiceAdapter;
+import com.loh.tally.ui.presentations.poll.adapter.OpenFormAdapter;
 import com.loh.tally.ui.presentations.poll.adapter.PollPagerAdapter;
+import com.loh.tally.ui.presentations.poll.presenter.MultipleChoiceContract;
+import com.loh.tally.ui.presentations.poll.presenter.MultipleChoicePresenter;
+import com.loh.tally.ui.presentations.poll.presenter.OpenFormContract;
+import com.loh.tally.ui.presentations.poll.presenter.OpenFormPresenter;
 import com.loh.tally.ui.presentations.poll.presenter.PollContract;
 import com.loh.tally.ui.presentations.poll.presenter.PollPresenter;
 import com.loh.tally.util.IntentUtil;
@@ -152,5 +158,29 @@ public class ViewModule {
     @ViewScope
     public PollContract.Presenter providePollPresenter(PresentationService presentationService, Bus bus) {
         return new PollPresenter(presentationService, bus);
+    }
+
+    @Provides
+    @ViewScope
+    public OpenFormContract.Presenter provideOpenFormPresenter(PresentationService presentationService) {
+        return new OpenFormPresenter(presentationService);
+    }
+
+    @Provides
+    @ViewScope
+    public OpenFormAdapter provideOpenFormAdapter() {
+        return new OpenFormAdapter();
+    }
+
+    @Provides
+    @ViewScope
+    public MultipleChoiceContract.Presenter provideMultipleChoicePresenter(PresentationService presentationService) {
+        return new MultipleChoicePresenter();
+    }
+
+    @Provides
+    @ViewScope
+    public MultipleChoiceAdapter provideMultipleChoiceAdapter() {
+        return new MultipleChoiceAdapter();
     }
 }
