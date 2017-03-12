@@ -36,7 +36,7 @@ public class PresentationPagerAdapter extends FragmentPagerAdapter {
                 return PresentationListFragment.newInstance(moduleID);
 
             case FRAGMENT_CHAT:
-                return ChatDetailFragment.newInstance();
+                return ChatDetailFragment.newInstance(moduleID);
         }
 
         return null;

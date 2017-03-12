@@ -10,6 +10,8 @@ import com.loh.tally.ui.authentication.adapter.AuthenticationPagerAdapter;
 import com.loh.tally.ui.authentication.presenter.AuthenticationContract;
 import com.loh.tally.ui.authentication.presenter.AuthenticationPresenter;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
+import com.loh.tally.ui.chat.detail.presenter.ChatDetailContract;
+import com.loh.tally.ui.chat.detail.presenter.ChatDetailPresenter;
 import com.loh.tally.ui.chat.list.adapter.ChatListAdapter;
 import com.loh.tally.ui.chat.list.presenter.ChatListContract;
 import com.loh.tally.ui.chat.list.presenter.ChatListPresenter;
@@ -103,6 +105,13 @@ public class ViewModule {
         final String userID = authenticationManager.getCurrentUser().getUid();
         return new ChatListAdapter(moduleService.getModuleEnrolledReference(userID),
                 moduleService.getModuleCreatedReference(userID), chatService.getRootRef());
+    }
+
+    // Chat Detail Components
+    @Provides
+    @ViewScope
+    public ChatDetailContract.Presenter provideChatDetailPresenter(ChatService chatService) {
+        return new ChatDetailPresenter(chatService);
     }
 
     // Presentation Components
