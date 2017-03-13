@@ -20,4 +20,9 @@ public class IntentUtil {
     public static final String INTENT_PRESENTATION_PAGE = "presentation_activity_page";
 
     public static final String INTENT_PRESENTATION_KEY = "presentation_key";
+
+    public static final String ARGS_POLL_ID = "poll_id";
+
+    public static final String ARGS_POLL = "arg_poll";
+
 }

@@ -8,15 +8,12 @@ import com.loh.tally.domain.model.Poll;
 import com.loh.tally.ui.base.AsyncCallback;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
-import com.loh.tally.ui.presentations.poll.adapter.PollPagerAdapter;
 import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-
-import timber.log.Timber;
 
 /**
  * File: PollPresenter.java
@@ -37,10 +34,27 @@ public class PollPresenter extends BasePresenter<PollContract.View> implements P
     }
 
     @Override
-    public void retrievePolls(AsyncCallback<List<Poll>> callback) {
-        List<Poll> polls = new ArrayList<>();
+    public void handlePollSelected(int position) {
+        Poll poll = getView().getPollFromAdapter(position);
 
+        if (poll.getQuestionType().equals("Multiple Choice")) {
+            getView().showFabChat();
+            getView().hideChatMenu();
+        } else {
+            getView().hideFabChat();
+            getView().showChatMenu();
+        }
+    }
+
+    @Override
+    public void retrievePolls(AsyncCallback<List<Poll>> callback) {
+        if (callback == null) {
+            return;
+        }
+
+        List<Poll> polls = new ArrayList<>();
         String presentationID = getView().getPresentationID();
+
         presentationService.getPollsReference(presentationID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -49,8 +63,6 @@ public class PollPresenter extends BasePresenter<PollContract.View> implements P
                     poll.setID(ds.getKey());
                     poll.setPresID(presentationID);
                     polls.add(poll);
-
-                    Timber.d("Poll: " + poll.getQuestion());
                 }
 
                 callback.onSuccess(polls);
@@ -58,20 +70,10 @@ public class PollPresenter extends BasePresenter<PollContract.View> implements P
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                callback.onError(databaseError.getMessage());
             }
         });
 
-    }
-
-    @Override
-    public List<Poll> getPolls() {
-        return null;
-    }
-
-    @Override
-    public List<PollPagerAdapter.PollType> getPollTypes() {
-        return null;
     }
 
 

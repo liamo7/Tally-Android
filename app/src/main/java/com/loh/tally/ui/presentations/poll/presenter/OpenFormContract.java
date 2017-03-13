@@ -1,9 +1,7 @@
 package com.loh.tally.ui.presentations.poll.presenter;
 
-import com.loh.tally.ui.base.AsyncCallback;
+import com.google.firebase.database.DatabaseReference;
 import com.loh.tally.ui.base.presenter.BaseContract;
-
-import java.util.List;
 
 /**
  * File: OpenFormContract.java
@@ -21,14 +19,14 @@ public interface OpenFormContract {
         void clearMessage();
 
         String getPollID();
+
+        void scrollToTop();
     }
 
     interface Presenter extends BaseContract.Presenter<OpenFormContract.View> {
 
-        void retrievePollResponses(AsyncCallback<List<String>> callback);
-
-        void retrievePoll();
-
         void submitResponse();
+
+        DatabaseReference getPollResponseReference();
     }
 }

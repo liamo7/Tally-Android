@@ -28,7 +28,6 @@ import com.loh.tally.ui.presentations.main.adapter.PresentationPagerAdapter;
 import com.loh.tally.ui.presentations.main.presenter.PresentationContract;
 import com.loh.tally.ui.presentations.main.presenter.PresentationPresenter;
 import com.loh.tally.ui.presentations.poll.adapter.MultipleChoiceAdapter;
-import com.loh.tally.ui.presentations.poll.adapter.OpenFormAdapter;
 import com.loh.tally.ui.presentations.poll.adapter.PollPagerAdapter;
 import com.loh.tally.ui.presentations.poll.presenter.MultipleChoiceContract;
 import com.loh.tally.ui.presentations.poll.presenter.MultipleChoicePresenter;
@@ -164,12 +163,6 @@ public class ViewModule {
     @ViewScope
     public OpenFormContract.Presenter provideOpenFormPresenter(PresentationService presentationService) {
         return new OpenFormPresenter(presentationService);
-    }
-
-    @Provides
-    @ViewScope
-    public OpenFormAdapter provideOpenFormAdapter() {
-        return new OpenFormAdapter();
     }
 
     @Provides

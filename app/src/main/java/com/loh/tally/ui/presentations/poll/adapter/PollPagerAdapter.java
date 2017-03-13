@@ -61,6 +61,10 @@ public class PollPagerAdapter extends FragmentPagerAdapter {
         notifyDataSetChanged();
     }
 
+    public Poll getPoll(int position) {
+        return this.polls.get(position);
+    }
+
     public enum PollType {
         MULTIPLE_CHOICE("Multiple Choice"),
         OPEN_FORM("Open");

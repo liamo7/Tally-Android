@@ -3,7 +3,6 @@ package com.loh.tally.ui.presentations.poll.presenter;
 import com.loh.tally.domain.model.Poll;
 import com.loh.tally.ui.base.AsyncCallback;
 import com.loh.tally.ui.base.presenter.BaseContract;
-import com.loh.tally.ui.presentations.poll.adapter.PollPagerAdapter;
 
 import java.util.List;
 
@@ -19,14 +18,22 @@ public interface PollContract {
     interface View extends BaseContract.View {
 
         String getPresentationID();
+
+        Poll getPollFromAdapter(int position);
+
+        void showFabChat();
+
+        void hideFabChat();
+
+        void hideChatMenu();
+
+        void showChatMenu();
     }
 
     interface Presenter extends BaseContract.Presenter<PollContract.View> {
 
+        void handlePollSelected(int position);
+
         void retrievePolls(AsyncCallback<List<Poll>> callback);
-
-        List<Poll> getPolls();
-
-        List<PollPagerAdapter.PollType> getPollTypes();
     }
 }

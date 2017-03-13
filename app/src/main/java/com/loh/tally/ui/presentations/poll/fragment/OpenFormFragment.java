@@ -12,12 +12,9 @@ import android.widget.TextView;
 
 import com.loh.tally.R;
 import com.loh.tally.domain.model.Poll;
-import com.loh.tally.ui.base.AsyncCallback;
-import com.loh.tally.ui.presentations.poll.adapter.OpenFormAdapter;
+import com.loh.tally.ui.presentations.poll.adapter.OpenFormListAdapter;
 import com.loh.tally.ui.presentations.poll.presenter.OpenFormContract;
 import com.loh.tally.util.IntentUtil;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -31,7 +28,7 @@ import butterknife.OnClick;
  * Description: TODO:
  */
 
-public class OpenFormFragment extends PollFragment implements OpenFormContract.View, AsyncCallback<List<String>> {
+public class OpenFormFragment extends PollFragment implements OpenFormContract.View {
 
     @BindView(R.id.question) TextView question;
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
@@ -39,7 +36,8 @@ public class OpenFormFragment extends PollFragment implements OpenFormContract.V
     @BindView(R.id.sendBtn) Button sendButton;
 
     @Inject OpenFormContract.Presenter presenter;
-    @Inject OpenFormAdapter adapter;
+
+    private OpenFormListAdapter adapter;
 
     public static OpenFormFragment newInstance(Poll poll) {
         Bundle args = new Bundle();
@@ -55,9 +53,6 @@ public class OpenFormFragment extends PollFragment implements OpenFormContract.V
         presenter.attach(this);
         setupRecycler();
         setupPoll();
-        presenter.retrievePollResponses(this);
-
-        eventbus.post(new ChatFabEvent(false));
     }
 
     @Override
@@ -77,16 +72,6 @@ public class OpenFormFragment extends PollFragment implements OpenFormContract.V
     }
 
     @Override
-    public void onSuccess(List<String> model) {
-        adapter.setResponses(model);
-    }
-
-    @Override
-    public void onFailure() {
-
-    }
-
-    @Override
     public String getResponse() {
         return input.getText().toString();
     }
@@ -99,10 +84,16 @@ public class OpenFormFragment extends PollFragment implements OpenFormContract.V
     @Override
     public String getPollID() {
         Poll poll = getArguments().getParcelable(IntentUtil.ARGS_POLL);
-        return poll.getId();
+        return poll != null ? poll.getId() : null;
+    }
+
+    @Override
+    public void scrollToTop() {
+        recyclerView.smoothScrollToPosition(adapter.getItemCount());
     }
 
     private void setupRecycler() {
+        adapter = new OpenFormListAdapter(presenter.getPollResponseReference());
         recyclerView.setLayoutManager(getLayoutManager());
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
