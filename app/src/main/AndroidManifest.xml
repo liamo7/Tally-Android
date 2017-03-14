@@ -42,6 +42,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.loh.tally.ui.presentations.main.activity.PresentationActivity"/>
         </activity>
+        <activity
+            android:name=".ui.chat.detail.activity.ChatActivity"
+            android:label="@string/title_activity_chat"
+            android:parentActivityName=".ui.presentations.poll.activity.PollActivity"
+            android:theme="@style/TallyTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.loh.tally.ui.presentations.poll.activity.PollActivity"/>
+        </activity>
     </application>
 
 </manifest>

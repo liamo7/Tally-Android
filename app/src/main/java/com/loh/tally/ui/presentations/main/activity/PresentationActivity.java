@@ -107,4 +107,9 @@ public class PresentationActivity extends BaseActivity implements PresentationCo
     public void navigateToChat() {
         viewPager.setCurrentItem(PresentationPagerAdapter.FRAGMENT_CHAT);
     }
+
+    @Override
+    public String getModuleKey() {
+        return getIntent().getBundleExtra(IntentUtil.BUNDLE_KEY).getString(IntentUtil.INTENT_MODULE_KEY);
+    }
 }

@@ -15,6 +15,8 @@ public interface PresentationContract {
         void navigateToPresentations();
 
         void navigateToChat();
+
+        String getModuleKey();
     }
 
     interface Presenter extends BaseContract.Presenter<PresentationContract.View> {

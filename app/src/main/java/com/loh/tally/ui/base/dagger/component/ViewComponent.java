@@ -4,6 +4,7 @@ import com.loh.tally.ui.authentication.activity.AuthenticationActivity;
 import com.loh.tally.ui.base.activity.BaseActivity;
 import com.loh.tally.ui.base.dagger.module.ViewModule;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
+import com.loh.tally.ui.chat.detail.activity.ChatActivity;
 import com.loh.tally.ui.chat.detail.fragment.ChatDetailFragment;
 import com.loh.tally.ui.chat.list.fragment.ChatListFragment;
 import com.loh.tally.ui.main.activity.MainActivity;
@@ -50,4 +51,6 @@ public interface ViewComponent {
     void inject(MultipleChoiceFragment fragment);
 
     void inject(OpenFormFragment fragment);
+
+    void inject(ChatActivity activity);
 }

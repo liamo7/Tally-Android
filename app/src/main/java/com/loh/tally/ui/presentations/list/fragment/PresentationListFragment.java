@@ -89,6 +89,7 @@ public class PresentationListFragment extends BaseFragment implements Presentati
     public void onPresentationClicked(Presentation presentation) {
         Bundle bundle = new Bundle();
         bundle.putString(IntentUtil.INTENT_PRESENTATION_KEY, presentation.getId());
+        bundle.putString(IntentUtil.INTENT_MODULE_KEY, getModuleID());
         startActivity(PollActivity.getStartingIntent(getActivity(), bundle));
     }
 }

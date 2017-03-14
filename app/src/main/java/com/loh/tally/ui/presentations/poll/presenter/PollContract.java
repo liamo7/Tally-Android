@@ -19,6 +19,8 @@ public interface PollContract {
 
         String getPresentationID();
 
+        String getModuleKey();
+
         Poll getPollFromAdapter(int position);
 
         void showFabChat();

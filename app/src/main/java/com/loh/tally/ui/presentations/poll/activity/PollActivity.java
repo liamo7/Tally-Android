@@ -13,6 +13,7 @@ import com.loh.tally.domain.model.Poll;
 import com.loh.tally.ui.authentication.event.AuthenticationLogoutEvent;
 import com.loh.tally.ui.base.AsyncCallback;
 import com.loh.tally.ui.base.activity.BaseActivity;
+import com.loh.tally.ui.chat.detail.activity.ChatActivity;
 import com.loh.tally.ui.presentations.poll.adapter.PollPagerAdapter;
 import com.loh.tally.ui.presentations.poll.presenter.PollContract;
 import com.loh.tally.util.IntentUtil;
@@ -23,6 +24,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class PollActivity extends BaseActivity implements PollContract.View, AsyncCallback<List<Poll>> {
 
@@ -82,12 +84,11 @@ public class PollActivity extends BaseActivity implements PollContract.View, Asy
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
+        if (item.getItemId() == R.id.action_chat) {
+            onChatViewClicked();
         }
 
-        return false;
+        return super.onOptionsItemSelected(item);
     }
 
     private void setupViewpager() {
@@ -152,5 +153,17 @@ public class PollActivity extends BaseActivity implements PollContract.View, Asy
 
     @Override
     public void onError(String message) {
+    }
+
+    @OnClick({R.id.chatFab})
+    protected void onChatViewClicked() {
+        Bundle bundle = new Bundle();
+        bundle.putString(IntentUtil.INTENT_MODULE_KEY, getModuleKey());
+        startActivity(ChatActivity.getStartingIntent(this, bundle));
+    }
+
+    @Override
+    public String getModuleKey() {
+        return getIntent().getBundleExtra(IntentUtil.BUNDLE_KEY).getString(IntentUtil.INTENT_MODULE_KEY);
     }
 }

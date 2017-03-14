@@ -21,4 +21,5 @@
     <string name="input_chat_hint">Type a message</string>
     <string name="title_activity_poll">Poll</string>
     <string name="menu_chat">Chat</string>
+    <string name="title_activity_chat">Chat</string>
 </resources>

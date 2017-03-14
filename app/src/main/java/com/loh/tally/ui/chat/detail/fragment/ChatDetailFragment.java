@@ -118,12 +118,21 @@ public class ChatDetailFragment extends BaseFragment implements ChatDetailContra
     protected void onSendButtonClicked() {
         presenter.sendMessage();
         recyclerView.smoothScrollToPosition(chatAdapter.getItemCount());
-        getActivity().findViewById(R.id.bottomNavView).setVisibility(View.VISIBLE);
+
+        if (getActivityBottomNav() != null) {
+            getActivityBottomNav().setVisibility(View.VISIBLE);
+        }
     }
 
     @OnClick(R.id.input)
     protected void onInputClicked() {
         // dirty fix as bottomnav is moved up when edittext is in focus
-        getActivity().findViewById(R.id.bottomNavView).setVisibility(View.GONE);
+        if (getActivityBottomNav() != null) {
+            getActivityBottomNav().setVisibility(View.GONE);
+        }
+    }
+
+    private View getActivityBottomNav() {
+        return getActivity().findViewById(R.id.bottomNavView);
     }
 }
