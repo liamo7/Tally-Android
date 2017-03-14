@@ -155,6 +155,7 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
         barChart.setDrawValueAboveBar(false);
         barChart.getBarData().setDrawValues(false);
         barChart.setTouchEnabled(false);
+        barChart.getData().setBarWidth(1f);
 
     }
 
@@ -164,7 +165,7 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
         yVals.add(new BarEntry(1, 60));
         yVals.add(new BarEntry(2, 90));
         yVals.add(new BarEntry(3, 70));
-        yVals.add(new BarEntry(4, 30));
+        yVals.add(new BarEntry(4, 50));
 
         BarDataSet dataSet = new BarDataSet(yVals, "Auth");
         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
@@ -172,7 +173,6 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
         dataSets.add(dataSet);
 
         BarData data = new BarData(dataSets);
-        data.setBarWidth(0.7f);
         barChart.setData(data);
 
         return dataSet;
