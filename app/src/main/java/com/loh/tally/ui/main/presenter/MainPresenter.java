@@ -1,8 +1,10 @@
 package com.loh.tally.ui.main.presenter;
 
 import com.loh.tally.domain.authentication.AuthenticationManager;
+import com.loh.tally.domain.database.modules.ModuleService;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
+import com.loh.tally.ui.main.adapter.MainPagerAdapter;
 
 /**
  * File: MainPresenter.java
@@ -14,9 +16,11 @@ import com.loh.tally.ui.base.presenter.BasePresenter;
 public class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter {
 
     private final AuthenticationManager authenticationManager;
+    private final ModuleService moduleService;
 
-    public MainPresenter(AuthenticationManager authenticationManager) {
+    public MainPresenter(AuthenticationManager authenticationManager, ModuleService moduleService) {
         this.authenticationManager = authenticationManager;
+        this.moduleService = moduleService;
     }
 
     @Override
@@ -32,5 +36,25 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
     @Override
     public void logout() {
         authenticationManager.logout();
+    }
+
+    @Override
+    public void handleSwitch(int position) {
+        if (position == MainPagerAdapter.PAGE_MODULE_LIST) {
+            getView().showEnrollFab();
+        } else if (position == MainPagerAdapter.PAGE_CHAT_LIST) {
+            getView().hideEnrollFab();
+        }
+    }
+
+    @Override
+    public void showEnrollDialog() {
+        getView().showEnrollDialog();
+    }
+
+    @Override
+    public void enrollOnModule(CharSequence input) {
+        String moduleID = input.toString();
+        moduleService.enrollOnModule(moduleID, authenticationManager.getCurrentUser().getUid());
     }
 }

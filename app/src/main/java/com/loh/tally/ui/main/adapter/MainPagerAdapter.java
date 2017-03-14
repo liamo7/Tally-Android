@@ -17,6 +17,9 @@ import com.loh.tally.ui.modules.list.fragment.ModuleListFragment;
 @ViewScope
 public class MainPagerAdapter extends FragmentPagerAdapter {
 
+    public static final int PAGE_MODULE_LIST = 0;
+    public static final int PAGE_CHAT_LIST = 1;
+
     public MainPagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -26,10 +29,10 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
 
-            case 0:
+            case PAGE_MODULE_LIST:
                 return ModuleListFragment.newInstance();
 
-            case 1:
+            case PAGE_CHAT_LIST:
                 return ChatListFragment.newInstance();
         }
 

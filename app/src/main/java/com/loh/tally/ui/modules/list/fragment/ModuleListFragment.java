@@ -20,7 +20,6 @@ import com.loh.tally.util.IntentUtil;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import timber.log.Timber;
 
 /**
  * File: ModuleListFragment.java
@@ -93,7 +92,6 @@ public class ModuleListFragment extends BaseFragment implements ModuleListContra
 
     @Override
     public void onChatClicked(String moduleID) {
-        Timber.d("MOdule Chat clicked");
         Bundle bundle = new Bundle();
         bundle.putString(IntentUtil.INTENT_MODULE_KEY, moduleID);
         bundle.putInt(IntentUtil.INTENT_PRESENTATION_PAGE, PresentationPagerAdapter.FRAGMENT_CHAT);

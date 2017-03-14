@@ -78,8 +78,8 @@ public class ViewModule {
     // Main Components
     @Provides
     @ViewScope
-    public MainContract.Presenter provideMainPresenter(AuthenticationManager authenticationManager) {
-        return new MainPresenter(authenticationManager);
+    public MainContract.Presenter provideMainPresenter(AuthenticationManager authenticationManager, ModuleService moduleService) {
+        return new MainPresenter(authenticationManager, moduleService);
     }
 
     @Provides

@@ -15,6 +15,12 @@ public interface MainContract {
         void navigateToModules();
 
         void navigateToChats();
+
+        void showEnrollFab();
+
+        void hideEnrollFab();
+
+        void showEnrollDialog();
     }
 
     interface Presenter extends BaseContract.Presenter<View> {
@@ -24,5 +30,11 @@ public interface MainContract {
         void navigateToChats();
 
         void logout();
+
+        void handleSwitch(int position);
+
+        void showEnrollDialog();
+
+        void enrollOnModule(CharSequence input);
     }
 }

@@ -44,12 +44,16 @@ public class ModuleServiceImpl implements ModuleService {
 
     @Override
     public void enrollOnModule(String moduleID, String userID) {
-        moduleReference.child(moduleID).addListenerForSingleValueEvent(new ValueEventListener() {
+        moduleReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Module module = dataSnapshot.getValue(Module.class);
-                module.setId(dataSnapshot.getKey());
-                enroll(module, userID);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Module module = snapshot.getValue(Module.class);
+                    module.setId(snapshot.getKey());
+                    if (module.getCode().equalsIgnoreCase(moduleID)) {
+                        enroll(module, userID);
+                    }
+                }
             }
 
             @Override
@@ -62,5 +66,4 @@ public class ModuleServiceImpl implements ModuleService {
     private void enroll(Module module, String userID) {
         getModuleEnrolledReference(userID).child(module.getId()).setValue(module);
     }
-
 }

@@ -24,21 +24,38 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <com.loh.tally.ui.views.NonSwipeableViewPager
-        android:id="@+id/viewpager"
+    <RelativeLayout
+        android:id="@+id/contentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottomNavView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:itemBackground="@color/colorPrimary"
-        app:itemIconTint="@drawable/bottom_nav_selector"
-        app:itemTextColor="@drawable/bottom_nav_selector"
-        app:layout_anchor="@id/viewpager"
-        app:layout_anchorGravity="bottom"
-        app:menu="@menu/bottom_navigation_main"/>
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottomNavView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/colorPrimary"
+            app:itemIconTint="@drawable/bottom_nav_selector"
+            app:itemTextColor="@drawable/bottom_nav_selector"
+            app:menu="@menu/bottom_navigation_main"/>
+
+        <com.loh.tally.ui.views.NonSwipeableViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottomNavView"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/enrollFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/viewpager"
+            android:layout_alignEnd="@id/viewpager"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@android:drawable/ic_input_add"
+            android:tint="@color/colorWhite"/>
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

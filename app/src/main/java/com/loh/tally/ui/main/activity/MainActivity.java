@@ -5,8 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.ViewPager;
+import android.text.InputType;
 import android.view.MenuItem;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.loh.tally.R;
 import com.loh.tally.ui.authentication.event.AuthenticationLogoutEvent;
 import com.loh.tally.ui.base.activity.BaseActivity;
@@ -19,6 +23,7 @@ import com.squareup.otto.Subscribe;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * File: MainActivity.java
@@ -31,6 +36,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
 
     @BindView(R.id.bottomNavView) BottomNavigationView bottomNavView;
     @BindView(R.id.viewpager) NonSwipeableViewPager viewPager;
+    @BindView(R.id.enrollFab) FloatingActionButton enrollFab;
 
     @Inject MainContract.Presenter presenter;
     @Inject MainPagerAdapter pagerAdapter;
@@ -58,6 +64,23 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
 
     private void setupViewPager() {
         viewPager.setAdapter(pagerAdapter);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                presenter.handleSwitch(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
@@ -114,5 +137,32 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
     @Override
     public void navigateToChats() {
         viewPager.setCurrentItem(1);
+    }
+
+    @Override
+    public void showEnrollFab() {
+        enrollFab.show();
+    }
+
+    @Override
+    public void hideEnrollFab() {
+        enrollFab.hide();
+    }
+
+    @OnClick(R.id.enrollFab)
+    protected void onEnrollFabClicked() {
+        presenter.showEnrollDialog();
+    }
+
+    @Override
+    public void showEnrollDialog() {
+        new MaterialDialog.Builder(this)
+                .title("Module Enrollment")
+                .content("Content")
+                .cancelable(true)
+                .inputType(InputType.TYPE_CLASS_TEXT)
+                .input("SET10101", null, false, (dialog, input) -> {
+                    presenter.enrollOnModule(input);
+                }).show();
     }
 }
