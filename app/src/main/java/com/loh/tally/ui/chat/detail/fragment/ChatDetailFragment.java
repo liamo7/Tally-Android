@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.loh.tally.R;
+import com.loh.tally.domain.profanity.ProfanityChecker;
 import com.loh.tally.ui.base.fragment.BaseFragment;
 import com.loh.tally.ui.chat.detail.adapter.ChatDetailAdapter;
 import com.loh.tally.ui.chat.detail.presenter.ChatDetailContract;
@@ -36,6 +37,7 @@ public class ChatDetailFragment extends BaseFragment implements ChatDetailContra
     @BindView(R.id.sendBtn) Button sendButton;
 
     @Inject ChatDetailContract.Presenter presenter;
+    @Inject ProfanityChecker profanityChecker;
 
     private ChatDetailAdapter chatAdapter;
 
@@ -86,7 +88,8 @@ public class ChatDetailFragment extends BaseFragment implements ChatDetailContra
 
     @Override
     public String getMessage() {
-        return messageEditText.getText().toString();
+        String message = messageEditText.getText().toString();
+        return profanityChecker.check(message);
     }
 
     @Override

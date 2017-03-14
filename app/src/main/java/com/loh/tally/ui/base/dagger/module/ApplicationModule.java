@@ -16,6 +16,8 @@ import com.loh.tally.domain.database.presentation.PresentationService;
 import com.loh.tally.domain.database.presentation.PresentationServiceImpl;
 import com.loh.tally.domain.database.user.UserService;
 import com.loh.tally.domain.database.user.UserServiceImpl;
+import com.loh.tally.domain.profanity.ProfanityChecker;
+import com.loh.tally.domain.profanity.ProfanityCheckerImpl;
 import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
 import com.squareup.otto.Bus;
 
@@ -95,5 +97,11 @@ public class ApplicationModule {
     @ApplicationScope
     public AuthenticationManager provideAuthenticationManager(FirebaseAuth firebaseAuth, Bus bus, UserService userService) {
         return new AuthenticationManagerImpl(firebaseAuth, bus, userService);
+    }
+
+    @Provides
+    @ApplicationScope
+    public ProfanityChecker provideProfanityChecker() {
+        return new ProfanityCheckerImpl();
     }
 }

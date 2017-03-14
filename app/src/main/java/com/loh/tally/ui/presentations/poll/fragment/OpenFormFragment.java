@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.loh.tally.R;
 import com.loh.tally.domain.model.Poll;
+import com.loh.tally.domain.profanity.ProfanityChecker;
 import com.loh.tally.ui.presentations.poll.adapter.OpenFormListAdapter;
 import com.loh.tally.ui.presentations.poll.presenter.OpenFormContract;
 import com.loh.tally.util.IntentUtil;
@@ -36,6 +37,7 @@ public class OpenFormFragment extends PollFragment implements OpenFormContract.V
     @BindView(R.id.sendBtn) Button sendButton;
 
     @Inject OpenFormContract.Presenter presenter;
+    @Inject ProfanityChecker profanityChecker;
 
     private OpenFormListAdapter adapter;
 
@@ -73,7 +75,13 @@ public class OpenFormFragment extends PollFragment implements OpenFormContract.V
 
     @Override
     public String getResponse() {
-        return input.getText().toString();
+        String message = input.getText().toString();
+
+        if (getPoll().isProfanityFilter()) {
+            return profanityChecker.check(message);
+        }
+
+        return message;
     }
 
     @Override
