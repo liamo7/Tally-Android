@@ -2,6 +2,7 @@ package com.loh.tally;
 
 import android.app.Application;
 
+import com.loh.tally.ui.base.ActivityLifecycleCallback;
 import com.loh.tally.ui.base.dagger.component.ApplicationComponent;
 import com.loh.tally.ui.base.dagger.component.DaggerApplicationComponent;
 import com.loh.tally.ui.base.dagger.module.ApplicationModule;
@@ -26,6 +27,7 @@ public class TallyApp extends Application {
         initLogger();
         initInjector();
         initLeakDetection();
+        initOrientation();
     }
 
     private void initLogger() {
@@ -44,6 +46,10 @@ public class TallyApp extends Application {
         if (BuildConfig.DEBUG) {
             LeakCanary.install(this);
         }
+    }
+
+    private void initOrientation() {
+        registerActivityLifecycleCallbacks(new ActivityLifecycleCallback());
     }
 
     public ApplicationComponent getApplicationComponent() {
