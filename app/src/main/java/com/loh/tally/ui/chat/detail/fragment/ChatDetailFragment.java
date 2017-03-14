@@ -57,6 +57,15 @@ public class ChatDetailFragment extends BaseFragment implements ChatDetailContra
         super.onViewCreated(view, savedInstanceState);
         presenter.attach(this);
         setupRecyclerView();
+        setInputFocusListener();
+    }
+
+    private void setInputFocusListener() {
+        messageEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                onInputClicked();
+            }
+        });
     }
 
     @Override
