@@ -166,9 +166,7 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
         yVals.add(new BarEntry(3, 70));
         yVals.add(new BarEntry(4, 30));
 
-        BarDataSet dataSet;
-
-        dataSet = new BarDataSet(yVals, "Auth");
+        BarDataSet dataSet = new BarDataSet(yVals, "Auth");
         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         ArrayList<IBarDataSet> dataSets = new ArrayList<>();
         dataSets.add(dataSet);
