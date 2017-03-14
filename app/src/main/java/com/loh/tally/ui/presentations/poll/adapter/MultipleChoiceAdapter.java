@@ -31,12 +31,6 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceVi
     @Override
     public MultipleChoiceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_multiple_choice, parent, false);
-
-        if (responses.size() > 0) {
-            int height = parent.getMeasuredHeight() / 2;
-            layout.setMinimumHeight(height);
-        }
-
         return new MultipleChoiceViewHolder(layout);
     }
 

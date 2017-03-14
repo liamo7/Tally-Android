@@ -11,4 +11,6 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorWindowBackground">#FFF3F3F3</color>
     <color name="colorPasswordHint">#546E7A</color>
+    <color name="colorChoiceDisabled">#EDEDED</color>
+    <color name="colorChoiceSelected">#A5A4A4</color>
 </resources>

@@ -22,4 +22,5 @@
     <string name="title_activity_poll">Poll</string>
     <string name="menu_chat">Chat</string>
     <string name="title_activity_chat">Chat</string>
+    <string name="response_casted">Your response has been casted.</string>
 </resources>

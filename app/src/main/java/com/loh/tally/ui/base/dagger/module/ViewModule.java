@@ -168,7 +168,7 @@ public class ViewModule {
     @Provides
     @ViewScope
     public MultipleChoiceContract.Presenter provideMultipleChoicePresenter(PresentationService presentationService) {
-        return new MultipleChoicePresenter();
+        return new MultipleChoicePresenter(presentationService);
     }
 
     @Provides

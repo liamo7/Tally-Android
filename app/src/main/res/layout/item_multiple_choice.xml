@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/container"
+                android:id="@+id/multipleChoiceContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:padding="20dp">
 
-    <RadioButton
-        android:id="@+id/responseRadioButton"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/responsePosition"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        tools:background="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/response"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:checked="false"
-        android:padding="25dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@id/responsePosition"
         android:textSize="16sp"
-        tools:text="Aeroplane"/>
+        tools:text="Prototype Response"/>
 
 </RelativeLayout>
