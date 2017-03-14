@@ -67,5 +67,8 @@ dependencies {
     // material dialogs
     compile 'com.afollestad.material-dialogs:core:0.9.4.1'
 
+    // MP Charts
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+
 }
 apply plugin: 'com.google.gms.google-services'
