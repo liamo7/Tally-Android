@@ -102,7 +102,7 @@ public class PollActivity extends BaseActivity implements PollContract.View, Asy
 
             @Override
             public void onPageSelected(int position) {
-
+                presenter.handlePollSelected(position);
             }
 
             @Override

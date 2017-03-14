@@ -30,7 +30,7 @@ public class ChatDetailPresenter extends BasePresenter<ChatDetailContract.View> 
     public void sendMessage() {
         String message = getView().getMessage();
 
-        if (message == null) {
+        if (message.isEmpty()) {
             return;
         }
 

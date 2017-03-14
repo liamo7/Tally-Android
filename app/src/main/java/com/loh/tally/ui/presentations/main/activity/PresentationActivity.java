@@ -63,10 +63,18 @@ public class PresentationActivity extends BaseActivity implements PresentationCo
 
     private void setupViewpager() {
         viewPager.setAdapter(listAdapter);
+        handlePage();
+    }
 
+    private void handlePage() {
         int page = getIntent().getBundleExtra(IntentUtil.BUNDLE_KEY)
                 .getInt(IntentUtil.INTENT_PRESENTATION_PAGE, PresentationPagerAdapter.FRAGMENT_PRESENTATIONS);
-        viewPager.setCurrentItem(page);
+
+        if (page == PresentationPagerAdapter.FRAGMENT_PRESENTATIONS) {
+            presenter.navigateToPresentations();
+        } else if (page == PresentationPagerAdapter.FRAGMENT_CHAT) {
+            presenter.navigateToChat();
+        }
     }
 
     private void setupBottomNavigation() {
@@ -101,11 +109,13 @@ public class PresentationActivity extends BaseActivity implements PresentationCo
     @Override
     public void navigateToPresentations() {
         viewPager.setCurrentItem(PresentationPagerAdapter.FRAGMENT_PRESENTATIONS);
+        getSupportActionBar().setTitle("Presentations");
     }
 
     @Override
     public void navigateToChat() {
         viewPager.setCurrentItem(PresentationPagerAdapter.FRAGMENT_CHAT);
+        getSupportActionBar().setTitle("Chat");
     }
 
     @Override
