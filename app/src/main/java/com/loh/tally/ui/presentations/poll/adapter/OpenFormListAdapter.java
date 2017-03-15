@@ -15,7 +15,7 @@ import com.loh.tally.R;
 public class OpenFormListAdapter extends FirebaseRecyclerAdapter<String, OpenFormViewHolder> {
 
     public OpenFormListAdapter(DatabaseReference ref) {
-        this(String.class, R.layout.item_open_form, OpenFormViewHolder.class, ref);
+        this(String.class, R.layout.item_open_form, OpenFormViewHolder.class, ref.child("values"));
     }
     /**
      * @param modelClass      Firebase will marshall the data at a location into an instance of a class that you provide

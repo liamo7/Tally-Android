@@ -69,7 +69,7 @@ public class MultipleChoicePresenter extends BasePresenter<MultipleChoiceContrac
     public void submitResponse(int position) {
         Poll poll = getView().getPoll();
 
-        presentationService.getPollResponsesReference(poll.getId()).child(String.valueOf(position))
+        presentationService.getPollResponsesReference(poll.getId()).child("values").child(String.valueOf(position))
                 .runTransaction(new Transaction.Handler() {
                     @Override
                     public Transaction.Result doTransaction(MutableData mutableData) {
