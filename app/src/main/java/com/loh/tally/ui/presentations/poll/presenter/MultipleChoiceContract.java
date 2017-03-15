@@ -19,7 +19,7 @@ public interface MultipleChoiceContract {
 
         Poll getPoll();
 
-        void setClickable(boolean clickable);
+        void setClickable(boolean clickable, int index);
 
         String getUserID();
 

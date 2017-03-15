@@ -21,19 +21,21 @@ public class Poll implements Parcelable {
     private String chartType;
     private boolean profanityFilter;
     private List<String> choices;
+    private boolean singleChoice;
     private HashMap<String, Boolean> submission;
     private String presID;
 
     public Poll() {
     }
 
-    public Poll(String id, String question, String questionType, String chartType, boolean profanityFilter, List<String> choices) {
+    public Poll(String id, String question, String questionType, String chartType, boolean profanityFilter, List<String> choices, boolean singleChoice) {
         this.id = id;
         this.question = question;
         this.questionType = questionType;
         this.chartType = chartType;
         this.profanityFilter = profanityFilter;
         this.choices = choices;
+        this.singleChoice = singleChoice;
     }
 
     public String getId() {
@@ -76,6 +78,14 @@ public class Poll implements Parcelable {
         this.presID = presID;
     }
 
+    public void setSingleChoice(boolean singleChoice) {
+        this.singleChoice = singleChoice;
+    }
+
+    public boolean isSingleChoice() {
+        return singleChoice;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -91,6 +101,7 @@ public class Poll implements Parcelable {
         dest.writeStringList(this.choices);
         dest.writeSerializable(this.submission);
         dest.writeString(this.presID);
+        dest.writeByte(this.singleChoice ? (byte) 1 : (byte) 0);
     }
 
     protected Poll(Parcel in) {
@@ -102,6 +113,7 @@ public class Poll implements Parcelable {
         this.choices = in.createStringArrayList();
         this.submission = (HashMap<String, Boolean>) in.readSerializable();
         this.presID = in.readString();
+        this.singleChoice = in.readByte() != 0;
     }
 
     public static final Creator<Poll> CREATOR = new Creator<Poll>() {

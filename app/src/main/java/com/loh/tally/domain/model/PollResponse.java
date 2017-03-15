@@ -11,17 +11,29 @@ import java.util.List;
 public class PollResponse {
 
     private List<Integer> responses;
-    private List<String> formResposne;
+    private int position;
 
     public PollResponse() {
 
+    }
+
+    public PollResponse(int position) {
+        this.position = position;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public List<Integer> getResponses() {
         return responses;
     }
 
-    public List<String> getFormResposne() {
-        return formResposne;
+    public void setResponses(List<Integer> responses) {
+        this.responses = responses;
     }
 }

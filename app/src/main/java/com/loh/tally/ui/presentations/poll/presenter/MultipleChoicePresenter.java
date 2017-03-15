@@ -42,15 +42,14 @@ public class MultipleChoicePresenter extends BasePresenter<MultipleChoiceContrac
         Poll poll = getView().getPoll();
         String userID = getView().getUserID();
 
-        presentationService.getPollsReference(poll.getPresID())
-                .child(poll.getId())
+        presentationService.getPollResponsesReference(poll.getId())
                 .child("submission")
                 .child(userID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            //getView().setClickable(false);
+                            getView().setClickable(false, dataSnapshot.getValue(Integer.class));
                         }
                     }
 
@@ -75,10 +74,14 @@ public class MultipleChoicePresenter extends BasePresenter<MultipleChoiceContrac
                     @Override
                     public Transaction.Result doTransaction(MutableData mutableData) {
                         mutableData.setValue((long) mutableData.getValue() + 1);
-                        //setUserSubmission();
-                        //getView().setSelectedColor(position);
+
+                        if (poll.isSingleChoice()) {
+                            setUserSubmission(position);
+                        }
+
                         getView().showCastMessage();
                         return Transaction.success(mutableData);
+
                     }
 
                     @Override
@@ -88,11 +91,10 @@ public class MultipleChoicePresenter extends BasePresenter<MultipleChoiceContrac
                 });
     }
 
-    private void setUserSubmission() {
-        presentationService.getPollsReference(getView().getPoll().getPresID())
-                .child(getView().getPoll().getId())
+    private void setUserSubmission(int index) {
+        presentationService.getPollResponsesReference(getView().getPoll().getId())
                 .child("submission")
                 .child(getView().getUserID())
-                .setValue(true);
+                .setValue(index);
     }
 }

@@ -93,12 +93,14 @@ public class MultipleChoiceFragment extends PollFragment implements MultipleChoi
     }
 
     @Override
-    public void setClickable(boolean clickable) {
+    public void setClickable(boolean clickable, int index) {
         this.clickable = clickable;
         for (int i = 0; i < recyclerView.getChildCount(); i++) {
             ViewGroup viewGroup = (ViewGroup) recyclerView.getChildAt(i);
             viewGroup.setClickable(false);
-            viewGroup.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorChoiceDisabled));
+            if (i == index) {
+                viewGroup.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorChoiceDisabled));
+            }
         }
     }
 
