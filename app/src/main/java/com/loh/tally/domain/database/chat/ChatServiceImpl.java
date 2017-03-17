@@ -1,7 +1,10 @@
 package com.loh.tally.domain.database.chat;
 
+import android.support.annotation.NonNull;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.loh.tally.domain.model.ChatMessage;
 import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
 
 import javax.inject.Inject;
@@ -33,5 +36,10 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public DatabaseReference getModuleChat(String moduleID) {
         return this.chatRef.child(moduleID);
+    }
+
+    @Override
+    public void sendMessage(@NonNull String moduleID, ChatMessage message) {
+        getModuleChat(moduleID).push().setValue(message);
     }
 }

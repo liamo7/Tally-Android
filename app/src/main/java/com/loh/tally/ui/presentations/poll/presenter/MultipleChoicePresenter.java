@@ -68,26 +68,31 @@ public class MultipleChoicePresenter extends BasePresenter<MultipleChoiceContrac
     public void submitResponse(int position) {
         Poll poll = getView().getPoll();
 
-        presentationService.getPollResponsesReference(poll.getId()).child("values").child(String.valueOf(position))
-                .runTransaction(new Transaction.Handler() {
-                    @Override
-                    public Transaction.Result doTransaction(MutableData mutableData) {
-                        mutableData.setValue((long) mutableData.getValue() + 1);
+        presentationService.getPollResponsesReference(poll.getId()).child("values").child(String.valueOf(position)).runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                long value = 0;
 
-                        if (poll.isSingleChoice()) {
-                            setUserSubmission(position);
-                        }
+                if (mutableData.getValue() != null) {
+                    value = (long) mutableData.getValue();
+                }
 
-                        getView().showCastMessage();
-                        return Transaction.success(mutableData);
+                value++;
+                mutableData.setValue(value);
 
-                    }
+                if (poll.isSingleChoice()) {
+                    setUserSubmission(position);
+                }
 
-                    @Override
-                    public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+                getView().showCastMessage();
+                return Transaction.success(mutableData);
+            }
 
-                    }
-                });
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+
+            }
+        });
     }
 
     private void setUserSubmission(int index) {

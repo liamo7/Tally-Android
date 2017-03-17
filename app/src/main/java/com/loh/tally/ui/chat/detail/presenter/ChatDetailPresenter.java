@@ -37,7 +37,7 @@ public class ChatDetailPresenter extends BasePresenter<ChatDetailContract.View> 
 
         if (moduleID != null) {
             ChatMessage chatMessage = new ChatMessage(new Date().getTime(), message);
-            chatService.getModuleChat(getView().getModuleID()).push().setValue(chatMessage);
+            chatService.sendMessage(moduleID, chatMessage);
             getView().clearMessage();
             getView().hideKeypad();
         }
