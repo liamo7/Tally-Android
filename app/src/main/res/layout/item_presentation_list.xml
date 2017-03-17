@@ -4,12 +4,12 @@
                 android:id="@+id/container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp">
+                android:padding="@dimen/presentation_list_containe_padding">
 
     <ImageView
         android:id="@+id/circle"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="@dimen/presentation_list_circle_width"
+        android:layout_height="@dimen/presentation_list_circle_height"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         tools:background="@color/colorAccent"/>
@@ -18,9 +18,9 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/presentation_list_name_margin_x"
         android:layout_toEndOf="@id/circle"
-        android:textSize="20sp"
+        android:textSize="@dimen/presentation_list_text_size"
         tools:text="Presentation One"/>
 
     <TextView
@@ -28,11 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/presentation_list_number_of_polls_margin_x"
         android:layout_toEndOf="@id/circle"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:textSize="15sp"
+        android:paddingBottom="@dimen/presentation_list_number_of_polls_padding_y"
+        android:paddingTop="@dimen/presentation_list_number_of_polls_padding_y"
+        android:textSize="@dimen/presentation_list_number_of_polls_text_size"
         android:text="@string/number_of_polls"
         tools:text="Number of Polls: 5"/>
 

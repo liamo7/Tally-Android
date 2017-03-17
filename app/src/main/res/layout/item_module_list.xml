@@ -5,21 +5,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
-                android:padding="15dp">
+                android:padding="@dimen/module_list_item_container_padding">
 
     <ImageView
         android:id="@+id/circle"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="@dimen/module_list_item_circle_width"
+        android:layout_height="@dimen/module_list_item_circle_height"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         tools:background="@color/colorAccent"/>
 
     <View
         android:id="@+id/chat"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:padding="25dp"
+        android:layout_width="@dimen/module_list_item_chat_width"
+        android:layout_height="@dimen/module_list_item_chat_height"
+        android:padding="@dimen/module_list_chat_padding"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:backgroundTint="@color/colorAccent"
@@ -29,13 +29,10 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/module_list_name_margin_x"
         android:layout_toEndOf="@id/circle"
-        android:layout_toLeftOf="@id/chat"
-        android:layout_toRightOf="@id/circle"
         android:layout_toStartOf="@id/chat"
-        android:textSize="20sp"
+        android:textSize="@dimen/module_list_name_text_size"
         tools:text="Honours Project"/>
 
     <TextView
@@ -43,15 +40,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/module_list_code_margin_x"
         android:layout_toEndOf="@id/circle"
-        android:layout_toLeftOf="@id/chat"
-        android:layout_toRightOf="@id/circle"
         android:layout_toStartOf="@id/chat"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:textSize="15sp"
+        android:paddingBottom="@dimen/module_list_code_padding_y"
+        android:paddingTop="@dimen/module_list_code_padding_y"
+        android:textSize="@dimen/module_list_code_text_size"
         tools:text="SET10101"/>
 
 </RelativeLayout>

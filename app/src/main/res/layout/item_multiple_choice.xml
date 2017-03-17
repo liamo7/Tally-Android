@@ -6,12 +6,12 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
-                android:padding="20dp">
+                android:padding="@dimen/multiple_choice_response_container_padding">
 
     <ImageView
         android:id="@+id/responsePosition"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/multiple_choice_position_width"
+        android:layout_height="@dimen/multiple_choice_position_height"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         tools:background="@color/colorAccent"/>
@@ -20,9 +20,9 @@
         android:id="@+id/response"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="@dimen/multiple_choice_choice_margin_x"
         android:layout_toEndOf="@id/responsePosition"
-        android:textSize="16sp"
+        android:textSize="@dimen/multiple_choice_choice_text_size"
         tools:text="Prototype Response"/>
 
 </RelativeLayout>

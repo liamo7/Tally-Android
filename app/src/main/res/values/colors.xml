@@ -13,4 +13,5 @@
     <color name="colorPasswordHint">#546E7A</color>
     <color name="colorChoiceDisabled">#EDEDED</color>
     <color name="colorChoiceSelected">#A5A4A4</color>
+    <color name="colorComposeMessage">#FFDCDCDC</color>
 </resources>

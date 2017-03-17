@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/email_input_edit_hint"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/colorPrimaryText" />
+                android:textColor="@color/colorPrimaryText"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/password_input_edit_hint"
                 android:inputType="textPassword"
-                android:textColor="@color/colorPrimaryText" />
+                android:textColor="@color/colorPrimaryText"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -61,7 +61,7 @@
             android:layout_marginBottom="@dimen/authentication_button_margin_vertical"
             android:layout_marginTop="@dimen/authentication_button_margin_vertical"
             android:text="@string/button_sign_in"
-            android:theme="@style/TallyTheme.Button" />
+            android:theme="@style/TallyTheme.Button"/>
 
     </RelativeLayout>
 

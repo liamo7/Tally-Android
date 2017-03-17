@@ -39,10 +39,10 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barChart"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="@dimen/authentication_bar_chart_height"
                 android:layout_below="@id/title"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="20dp"/>
+                android:layout_margin="@dimen/authentication_bar_chart_margin"/>
 
         </RelativeLayout>
 
