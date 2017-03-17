@@ -84,13 +84,14 @@ public class MultipleChoicePresenter extends BasePresenter<MultipleChoiceContrac
                     setUserSubmission(position);
                 }
 
-                getView().showCastMessage();
                 return Transaction.success(mutableData);
             }
 
             @Override
-            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
-
+            public void onComplete(DatabaseError databaseError, boolean committed, DataSnapshot dataSnapshot) {
+                if (committed) {
+                    getView().showCastMessage();
+                }
             }
         });
     }
