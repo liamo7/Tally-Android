@@ -30,9 +30,9 @@ public interface MultipleChoiceContract {
 
         DatabaseReference getPollResponseReference();
 
-        void listenForResponseChange();
+        void detectResponseSubmission();
 
-        List<String> getResponses();
+        List<String> getChoices();
 
         void submitResponse(int position);
     }

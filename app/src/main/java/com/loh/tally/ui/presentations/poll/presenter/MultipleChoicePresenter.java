@@ -1,19 +1,17 @@
 package com.loh.tally.ui.presentations.poll.presenter;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
-import com.google.firebase.database.ValueEventListener;
 import com.loh.tally.domain.database.presentation.PresentationService;
 import com.loh.tally.domain.model.Poll;
+import com.loh.tally.ui.base.TransactionCallback;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 
 import java.util.List;
 
 import javax.inject.Inject;
+
+import timber.log.Timber;
 
 /**
  * File: MultipleChoicePresenter.java
@@ -37,69 +35,33 @@ public class MultipleChoicePresenter extends BasePresenter<MultipleChoiceContrac
     }
 
     @Override
-    public void listenForResponseChange() {
+    public void detectResponseSubmission() {
         Poll poll = getView().getPoll();
         String userID = getView().getUserID();
 
-        presentationService.getPollResponsesReference(poll.getId())
-                .child("submission")
-                .child(userID)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            getView().setClickable(false, dataSnapshot.getValue(Integer.class));
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+        presentationService.detectSubmission(poll.getId(), userID, value -> getView().setClickable(false, value));
     }
 
     @Override
-    public List<String> getResponses() {
+    public List<String> getChoices() {
         return getView().getPoll().getChoices();
     }
 
     @Override
     public void submitResponse(int position) {
         Poll poll = getView().getPoll();
+        String userID = getView().getUserID();
 
-        presentationService.getPollResponsesReference(poll.getId()).child("values").child(String.valueOf(position)).runTransaction(new Transaction.Handler() {
+        presentationService.submitMultipleChoiceResponse(poll.getId(), userID, position, poll.isSingleChoice(), new TransactionCallback() {
             @Override
-            public Transaction.Result doTransaction(MutableData mutableData) {
-                long value = 0;
-
-                if (mutableData.getValue() != null) {
-                    value = (long) mutableData.getValue();
-                }
-
-                value++;
-                mutableData.setValue(value);
-
-                if (poll.isSingleChoice()) {
-                    setUserSubmission(position);
-                }
-
-                return Transaction.success(mutableData);
+            public void onSuccess() {
+                getView().showCastMessage();
             }
 
             @Override
-            public void onComplete(DatabaseError databaseError, boolean committed, DataSnapshot dataSnapshot) {
-                if (committed) {
-                    getView().showCastMessage();
-                }
+            public void onError(String error) {
+                Timber.d(error);
             }
         });
-    }
-
-    private void setUserSubmission(int index) {
-        presentationService.getPollResponsesReference(getView().getPoll().getId())
-                .child("submission")
-                .child(getView().getUserID())
-                .setValue(index);
     }
 }

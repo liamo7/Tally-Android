@@ -54,7 +54,7 @@ public class MultipleChoiceFragment extends PollFragment implements MultipleChoi
         setupPoll();
         setupRecycler();
 
-        presenter.listenForResponseChange();
+        presenter.detectResponseSubmission();
     }
 
     @Override
@@ -70,7 +70,7 @@ public class MultipleChoiceFragment extends PollFragment implements MultipleChoi
 
     private void setupRecycler() {
         adapter.setOnResponseClickListener(this);
-        adapter.setResponses(presenter.getResponses());
+        adapter.setResponses(presenter.getChoices());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);

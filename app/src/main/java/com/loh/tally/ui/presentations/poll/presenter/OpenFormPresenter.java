@@ -31,7 +31,7 @@ public class OpenFormPresenter extends BasePresenter<OpenFormContract.View> impl
             return;
         }
 
-        presentationService.getPollResponsesReference(pollID).child("values").push().setValue(message);
+        presentationService.submitOpenFormResponse(pollID, message);
         getView().clearMessage();
         getView().scrollToTop();
     }
