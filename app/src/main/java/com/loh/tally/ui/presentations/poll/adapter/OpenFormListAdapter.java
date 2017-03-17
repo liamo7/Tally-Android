@@ -9,14 +9,13 @@ import com.loh.tally.R;
  * File: OpenFormListAdapter.java
  * Date: 13/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class OpenFormListAdapter extends FirebaseRecyclerAdapter<String, OpenFormViewHolder> {
 
     public OpenFormListAdapter(DatabaseReference ref) {
         this(String.class, R.layout.item_open_form, OpenFormViewHolder.class, ref.child("values"));
     }
+
     /**
      * @param modelClass      Firebase will marshall the data at a location into an instance of a class that you provide
      * @param modelLayout     This is the layout used to represent a single item in the list. You will be responsible for populating an
@@ -25,7 +24,7 @@ public class OpenFormListAdapter extends FirebaseRecyclerAdapter<String, OpenFor
      * @param ref             The Firebase location to watch for data changes. Can also be a slice of a location, using some
      *                        combination of {@code limit()}, {@code startAt()}, and {@code endAt()}.
      */
-    public OpenFormListAdapter(Class<String> modelClass, int modelLayout, Class<OpenFormViewHolder> viewHolderClass, Query ref) {
+    private OpenFormListAdapter(Class<String> modelClass, int modelLayout, Class<OpenFormViewHolder> viewHolderClass, Query ref) {
         super(modelClass, modelLayout, viewHolderClass, ref);
     }
 

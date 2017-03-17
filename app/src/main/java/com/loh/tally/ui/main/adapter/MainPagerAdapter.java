@@ -8,11 +8,12 @@ import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.chat.list.fragment.ChatListFragment;
 import com.loh.tally.ui.modules.list.fragment.ModuleListFragment;
 
+import javax.inject.Inject;
+
 /**
  * File: MainPagerAdapter.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class MainPagerAdapter extends FragmentPagerAdapter {
@@ -20,6 +21,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     public static final int PAGE_MODULE_LIST = 0;
     public static final int PAGE_CHAT_LIST = 1;
 
+    @Inject
     public MainPagerAdapter(FragmentManager fm) {
         super(fm);
     }

@@ -12,11 +12,12 @@ import com.loh.tally.ui.authentication.view.RegisterView;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.squareup.otto.Bus;
 
+import javax.inject.Inject;
+
 /**
  * File: AuthenticationPagerAdapter.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class AuthenticationPagerAdapter extends PagerAdapter {
@@ -27,6 +28,7 @@ public class AuthenticationPagerAdapter extends PagerAdapter {
 
     private final Bus bus;
 
+    @Inject
     public AuthenticationPagerAdapter(Bus bus) {
         this.bus = bus;
     }

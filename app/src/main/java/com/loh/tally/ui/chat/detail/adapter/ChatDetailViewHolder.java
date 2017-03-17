@@ -15,7 +15,6 @@ import butterknife.ButterKnife;
  * File: ChatDetailViewHolder.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 public class ChatDetailViewHolder extends RecyclerView.ViewHolder {
 

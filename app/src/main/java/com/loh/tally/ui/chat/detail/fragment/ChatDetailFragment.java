@@ -27,9 +27,7 @@ import butterknife.OnClick;
  * File: ChatDetailFragment.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class ChatDetailFragment extends BaseFragment implements ChatDetailContract.View {
 
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
@@ -95,7 +93,7 @@ public class ChatDetailFragment extends BaseFragment implements ChatDetailContra
     @Override
     public String getMessage() {
         String message = messageEditText.getText().toString();
-        return profanityChecker.check(message);
+        return profanityChecker.replace(message);
     }
 
     @Override

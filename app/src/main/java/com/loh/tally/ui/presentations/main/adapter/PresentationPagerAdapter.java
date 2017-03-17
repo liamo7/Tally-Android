@@ -8,11 +8,12 @@ import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.chat.detail.fragment.ChatDetailFragment;
 import com.loh.tally.ui.presentations.list.fragment.PresentationListFragment;
 
+import javax.inject.Inject;
+
 /**
  * File: PresentationPagerAdapter.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class PresentationPagerAdapter extends FragmentPagerAdapter {
@@ -22,6 +23,7 @@ public class PresentationPagerAdapter extends FragmentPagerAdapter {
 
     private String moduleID;
 
+    @Inject
     public PresentationPagerAdapter(FragmentManager fm, String moduleID) {
         super(fm);
         this.moduleID = moduleID;

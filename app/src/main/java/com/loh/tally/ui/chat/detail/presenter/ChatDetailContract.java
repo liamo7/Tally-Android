@@ -7,9 +7,7 @@ import com.loh.tally.ui.base.presenter.BaseContract;
  * File: ChatDetailContract.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public interface ChatDetailContract {
 
     interface View extends BaseContract.ListView {

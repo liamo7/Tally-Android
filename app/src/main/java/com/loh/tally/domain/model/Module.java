@@ -4,9 +4,7 @@ package com.loh.tally.domain.model;
  * File: Module.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class Module {
 
     private String id;

@@ -26,7 +26,6 @@ import butterknife.BindView;
  * File: MultipleChoiceFragment.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 public class MultipleChoiceFragment extends PollFragment implements MultipleChoiceContract.View, MultipleChoiceAdapter.OnResponseClickListener {
 
@@ -115,23 +114,12 @@ public class MultipleChoiceFragment extends PollFragment implements MultipleChoi
     }
 
     @Override
-    public void setSelectedColor(int position) {
-        //ViewGroup viewGroup = (ViewGroup) recyclerView.getChildAt(position);
-        //viewGroup.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorChoiceSelected));
-    }
-
-    @Override
     public void showCastMessage() {
         Snackbar.make(container, R.string.response_casted, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
     public void onResponseClicked(int position) {
-//        Timber.d("On Response Clicked");
-//        if (canRespond()) {
-//            Timber.d("Can Respond");
-//            presenter.submitResponse(position);
-//        }
         presenter.submitResponse(position);
     }
 }

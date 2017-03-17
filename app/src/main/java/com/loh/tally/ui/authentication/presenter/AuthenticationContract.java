@@ -9,9 +9,7 @@ import com.loh.tally.ui.base.presenter.BaseContract;
  * File: AuthenticationContract.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public interface AuthenticationContract {
 
     interface View extends BaseContract.View {

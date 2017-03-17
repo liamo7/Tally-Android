@@ -8,9 +8,7 @@ import com.loh.tally.util.IntentUtil;
  * File: PollFragment.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public abstract class PollFragment extends BaseFragment {
 
     protected Poll getPoll() {

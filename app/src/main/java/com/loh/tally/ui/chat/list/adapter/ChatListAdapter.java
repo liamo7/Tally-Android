@@ -11,11 +11,12 @@ import com.loh.tally.domain.model.ChatMessage;
 import com.loh.tally.domain.model.Module;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 
+import javax.inject.Inject;
+
 /**
  * File: ChatListAdapter.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class ChatListAdapter extends FirebaseRecyclerAdapter<Module, ChatListViewHolder> {
@@ -25,6 +26,7 @@ public class ChatListAdapter extends FirebaseRecyclerAdapter<Module, ChatListVie
     private DatabaseReference createdRef;
     private DatabaseReference chatRef;
 
+    @Inject
     public ChatListAdapter(Query ref, DatabaseReference createdRef, DatabaseReference chatRef) {
         this(Module.class, R.layout.item_chat_list, ChatListViewHolder.class, ref);
         this.createdRef = createdRef;

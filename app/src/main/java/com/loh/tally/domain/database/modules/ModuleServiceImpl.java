@@ -8,11 +8,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.loh.tally.domain.model.Module;
 import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
 
+import javax.inject.Inject;
+
 /**
  * File: ModuleServiceImpl.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ApplicationScope
 public class ModuleServiceImpl implements ModuleService {
@@ -27,6 +28,7 @@ public class ModuleServiceImpl implements ModuleService {
     private DatabaseReference userEnrolledRef;
     private DatabaseReference userCreatedRef;
 
+    @Inject
     public ModuleServiceImpl(FirebaseDatabase firebaseDatabase) {
         this.firebaseDatabase = firebaseDatabase;
         this.moduleReference = this.firebaseDatabase.getReference(REF_MODULES);

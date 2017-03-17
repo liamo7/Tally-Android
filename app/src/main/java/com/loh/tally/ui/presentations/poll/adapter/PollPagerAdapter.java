@@ -17,7 +17,6 @@ import javax.inject.Inject;
  * File: PollPagerAdapter.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class PollPagerAdapter extends FragmentPagerAdapter {
@@ -31,8 +30,6 @@ public class PollPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        //PollType pollType = PollType.valueOf(polls.get(position).getQuestionType());
-        //Timber.d(pollType.getType());
         Poll poll = polls.get(position);
         String pollType = poll.getQuestionType();
 
@@ -63,20 +60,5 @@ public class PollPagerAdapter extends FragmentPagerAdapter {
 
     public Poll getPoll(int position) {
         return this.polls.get(position);
-    }
-
-    public enum PollType {
-        MULTIPLE_CHOICE("Multiple Choice"),
-        OPEN_FORM("Open");
-
-        private final String type;
-
-        PollType(String type) {
-            this.type = type;
-        }
-
-        public String getType() {
-            return type;
-        }
     }
 }

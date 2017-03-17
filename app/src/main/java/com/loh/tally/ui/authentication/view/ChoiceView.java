@@ -13,9 +13,7 @@ import butterknife.OnClick;
  * File: ChoiceView.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class ChoiceView {
 
     private final View layout;

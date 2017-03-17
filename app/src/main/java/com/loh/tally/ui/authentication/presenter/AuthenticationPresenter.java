@@ -7,17 +7,19 @@ import com.loh.tally.ui.authentication.event.AuthenticationRegisterEvent;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 
+import javax.inject.Inject;
+
 /**
  * File: AuthenticationPresenter.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class AuthenticationPresenter extends BasePresenter<AuthenticationContract.View> implements AuthenticationContract.Presenter {
 
     private final AuthenticationManager authenticationManager;
 
+    @Inject
     public AuthenticationPresenter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }

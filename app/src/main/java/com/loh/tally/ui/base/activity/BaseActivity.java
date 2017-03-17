@@ -117,7 +117,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             onBackPressed();
             return true;
         }
-
         return false;
     }
 }

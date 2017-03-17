@@ -6,9 +6,7 @@ import java.util.List;
  * File: Chat.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class Chat {
 
     private List<ChatMessage> messages;

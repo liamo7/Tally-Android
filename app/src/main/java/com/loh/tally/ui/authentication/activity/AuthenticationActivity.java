@@ -57,7 +57,6 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
         presenter.attach(this);
         setupViewPager();
         setupBarChart();
-
         presenter.checkAuthenticationState();
     }
 

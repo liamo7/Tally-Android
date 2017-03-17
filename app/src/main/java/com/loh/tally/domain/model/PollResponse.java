@@ -6,7 +6,6 @@ import java.util.List;
  * File: PollResponse.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 public class PollResponse {
 

@@ -3,6 +3,8 @@ package com.loh.tally.ui.modules.list.presenter;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 
+import javax.inject.Inject;
+
 /**
  * File: ModuleListPresenter.java
  * Date: 10/03/2017
@@ -13,6 +15,7 @@ import com.loh.tally.ui.base.presenter.BasePresenter;
 @ViewScope
 public class ModuleListPresenter extends BasePresenter<ModuleListContract.View> implements ModuleListContract.Presenter {
 
+    @Inject
     public ModuleListPresenter() {
     }
 }

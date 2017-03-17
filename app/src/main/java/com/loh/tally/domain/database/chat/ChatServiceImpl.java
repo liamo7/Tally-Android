@@ -2,14 +2,16 @@ package com.loh.tally.domain.database.chat;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
+
+import javax.inject.Inject;
 
 /**
  * File: ChatServiceImpl.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
+@ApplicationScope
 public class ChatServiceImpl implements ChatService {
 
     private static final String REF_CHAT = "chats";
@@ -17,6 +19,7 @@ public class ChatServiceImpl implements ChatService {
     private final FirebaseDatabase firebaseDatabase;
     private final DatabaseReference chatRef;
 
+    @Inject
     public ChatServiceImpl(FirebaseDatabase firebaseDatabase) {
         this.firebaseDatabase = firebaseDatabase;
         this.chatRef = firebaseDatabase.getReference(REF_CHAT);

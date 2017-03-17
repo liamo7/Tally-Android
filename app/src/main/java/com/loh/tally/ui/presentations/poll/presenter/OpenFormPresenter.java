@@ -11,7 +11,6 @@ import javax.inject.Inject;
  * File: OpenFormPresenter.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class OpenFormPresenter extends BasePresenter<OpenFormContract.View> implements OpenFormContract.Presenter {

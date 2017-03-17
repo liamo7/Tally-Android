@@ -6,9 +6,7 @@ import com.loh.tally.domain.event.BaseEvent;
  * File: AuthenticationChoiceEvent.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public final class AuthenticationChoiceEvent implements BaseEvent {
 
     private final AuthenticationChoice choice;

@@ -6,9 +6,7 @@ import com.google.firebase.auth.FirebaseUser;
  * File: AuthenticationManager.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public interface AuthenticationManager {
 
     boolean isLoggedIn();

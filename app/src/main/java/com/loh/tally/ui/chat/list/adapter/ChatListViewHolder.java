@@ -19,9 +19,7 @@ import butterknife.ButterKnife;
  * File: ChatListViewHolder.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class ChatListViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.container) View container;
@@ -29,8 +27,6 @@ public class ChatListViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.lastMessage) TextView lastMessage;
     @BindView(R.id.time) TextView time;
     @BindView(R.id.circle) ImageView circle;
-
-    private String lastMessageStr;
 
     public ChatListViewHolder(View itemView) {
         super(itemView);

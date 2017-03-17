@@ -16,7 +16,6 @@ import butterknife.OnClick;
  * File: RegisterView.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 public class RegisterView {
 

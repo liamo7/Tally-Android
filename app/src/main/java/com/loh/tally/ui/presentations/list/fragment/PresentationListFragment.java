@@ -23,15 +23,13 @@ import butterknife.BindView;
  * File: PresentationListFragment.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class PresentationListFragment extends BaseFragment implements PresentationListContract.View, PresentationListAdapter.OnPresentationItemClickListener {
 
     @Inject PresentationListContract.Presenter presenter;
 
     // avoid injecting this due to the requirement for a reference within constructor
-    //@Inject PresentationListAdapter listAdapter;
+    // @Inject PresentationListAdapter listAdapter;
     private PresentationListAdapter listAdapter;
 
     @BindView(R.id.recyclerView) RecyclerView recyclerView;

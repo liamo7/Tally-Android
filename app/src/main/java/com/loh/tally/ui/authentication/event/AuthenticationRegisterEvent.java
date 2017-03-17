@@ -6,9 +6,7 @@ import com.loh.tally.domain.event.BaseEvent;
  * File: AuthenticationRegisterEvent.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public final class AuthenticationRegisterEvent implements BaseEvent {
 
     private final String email;

@@ -6,17 +6,19 @@ import com.loh.tally.R;
 import com.loh.tally.domain.model.Module;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 
+import javax.inject.Inject;
+
 /**
  * File: ModuleListAdapter.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class ModuleListAdapter extends FirebaseRecyclerAdapter<Module, ModuleViewHolder> {
 
     private ModuleViewHolder.OnModuleItemClickListener listener;
 
+    @Inject
     public ModuleListAdapter(Query ref) {
         this(Module.class, R.layout.item_module_list, ModuleViewHolder.class, ref);
     }
@@ -29,7 +31,7 @@ public class ModuleListAdapter extends FirebaseRecyclerAdapter<Module, ModuleVie
      * @param ref             The Firebase location to watch for data changes. Can also be a slice of a location, using some
      *                        combination of {@code limit()}, {@code startAt()}, and {@code endAt()}.
      */
-    public ModuleListAdapter(Class<Module> modelClass, int modelLayout, Class<ModuleViewHolder> viewHolderClass, Query ref) {
+    private ModuleListAdapter(Class<Module> modelClass, int modelLayout, Class<ModuleViewHolder> viewHolderClass, Query ref) {
         super(modelClass, modelLayout, viewHolderClass, ref);
     }
 

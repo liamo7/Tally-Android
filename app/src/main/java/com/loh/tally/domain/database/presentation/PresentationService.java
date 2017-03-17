@@ -6,9 +6,7 @@ import com.google.firebase.database.DatabaseReference;
  * File: PresentationService.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public interface PresentationService {
 
     DatabaseReference getPresentationReference(String presentationID);

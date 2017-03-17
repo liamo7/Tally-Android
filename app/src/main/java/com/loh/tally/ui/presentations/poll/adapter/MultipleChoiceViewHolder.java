@@ -8,9 +8,6 @@ import android.widget.TextView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.loh.tally.R;
-import com.loh.tally.ui.base.dagger.scope.ViewScope;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,16 +16,13 @@ import butterknife.ButterKnife;
  * File: MultipleChoiceViewHolder.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-@ViewScope
 public class MultipleChoiceViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.multipleChoiceContainer) View container;
     @BindView(R.id.responsePosition) ImageView responsePosition;
     @BindView(R.id.response) TextView response;
 
-    @Inject
     public MultipleChoiceViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);

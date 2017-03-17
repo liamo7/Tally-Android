@@ -9,9 +9,7 @@ import java.util.List;
  * File: PollsRetrievedEvent.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public final class PollsRetrievedEvent implements BaseEvent {
 
     private final List<Poll> polls;

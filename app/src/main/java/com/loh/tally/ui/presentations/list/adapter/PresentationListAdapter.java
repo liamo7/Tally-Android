@@ -7,17 +7,19 @@ import com.loh.tally.R;
 import com.loh.tally.domain.model.Presentation;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 
+import javax.inject.Inject;
+
 /**
  * File: PresentationListAdapter.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class PresentationListAdapter extends FirebaseRecyclerAdapter<Presentation, PresentationListViewHolder> {
 
     private OnPresentationItemClickListener listener;
 
+    @Inject
     public PresentationListAdapter(DatabaseReference ref) {
         this(Presentation.class, R.layout.item_presentation_list, PresentationListViewHolder.class, ref);
     }
@@ -30,7 +32,7 @@ public class PresentationListAdapter extends FirebaseRecyclerAdapter<Presentatio
      * @param ref             The Firebase location to watch for data changes. Can also be a slice of a location, using some
      *                        combination of {@code limit()}, {@code startAt()}, and {@code endAt()}.
      */
-    public PresentationListAdapter(Class<Presentation> modelClass, int modelLayout, Class<PresentationListViewHolder> viewHolderClass, Query ref) {
+    private PresentationListAdapter(Class<Presentation> modelClass, int modelLayout, Class<PresentationListViewHolder> viewHolderClass, Query ref) {
         super(modelClass, modelLayout, viewHolderClass, ref);
     }
 

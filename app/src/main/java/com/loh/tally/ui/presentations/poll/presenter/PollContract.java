@@ -10,9 +10,7 @@ import java.util.List;
  * File: PollContract.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public interface PollContract {
 
     interface View extends BaseContract.View {

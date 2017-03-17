@@ -9,11 +9,14 @@ import com.loh.tally.ui.authentication.event.AuthenticationSuccessEvent;
 import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
 import com.squareup.otto.Bus;
 
+import javax.inject.Inject;
+
 /**
  * File: AuthenticationManagerImpl.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
+ * Description: Handles all user authentication within the application. Communicates with Firebase
+ * authentication.
  */
 @ApplicationScope
 public class AuthenticationManagerImpl implements AuthenticationManager {
@@ -22,6 +25,7 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
     private final Bus bus;
     private final UserService userService;
 
+    @Inject
     public AuthenticationManagerImpl(FirebaseAuth firebaseAuth, Bus bus, UserService userService) {
         this.firebaseAuth = firebaseAuth;
         this.bus = bus;

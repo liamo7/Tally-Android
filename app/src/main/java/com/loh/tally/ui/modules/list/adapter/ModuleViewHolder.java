@@ -19,9 +19,7 @@ import butterknife.ButterKnife;
  * File: ModuleViewHolder.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class ModuleViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.container) View container;

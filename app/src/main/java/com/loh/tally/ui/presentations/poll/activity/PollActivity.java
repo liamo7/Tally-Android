@@ -26,7 +26,8 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class PollActivity extends BaseActivity implements PollContract.View, AsyncCallback<List<Poll>> {
+public class PollActivity extends BaseActivity implements PollContract.View,
+        AsyncCallback<List<Poll>>, ViewPager.OnPageChangeListener {
 
     @BindView(R.id.viewpager) ViewPager viewPager;
     @BindView(R.id.chatFab) FloatingActionButton fab;
@@ -49,7 +50,6 @@ public class PollActivity extends BaseActivity implements PollContract.View, Asy
         setupBackToolbar();
         presenter.attach(this);
         setupViewpager();
-
         presenter.retrievePolls(this);
     }
 
@@ -94,22 +94,7 @@ public class PollActivity extends BaseActivity implements PollContract.View, Asy
     private void setupViewpager() {
         viewPager.setAdapter(pollPagerAdapter);
         viewPager.setOffscreenPageLimit(pollPagerAdapter.getCount());
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                presenter.handlePollSelected(position);
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                presenter.handlePollSelected(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
+        viewPager.addOnPageChangeListener(this);
     }
 
     @Override
@@ -165,5 +150,20 @@ public class PollActivity extends BaseActivity implements PollContract.View, Asy
     @Override
     public String getModuleKey() {
         return getIntent().getBundleExtra(IntentUtil.BUNDLE_KEY).getString(IntentUtil.INTENT_MODULE_KEY);
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        presenter.handlePollSelected(position);
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        presenter.handlePollSelected(position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }

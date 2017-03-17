@@ -10,7 +10,6 @@ import javax.inject.Inject;
  * File: PresentationServiceImpl.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ApplicationScope
 public class PresentationServiceImpl implements PresentationService {

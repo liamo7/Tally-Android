@@ -109,13 +109,13 @@ public class PresentationActivity extends BaseActivity implements PresentationCo
     @Override
     public void navigateToPresentations() {
         viewPager.setCurrentItem(PresentationPagerAdapter.FRAGMENT_PRESENTATIONS);
-        getSupportActionBar().setTitle("Presentations");
+        getSupportActionBar().setTitle(R.string.title_presentations);
     }
 
     @Override
     public void navigateToChat() {
         viewPager.setCurrentItem(PresentationPagerAdapter.FRAGMENT_CHAT);
-        getSupportActionBar().setTitle("Chat");
+        getSupportActionBar().setTitle(R.string.title_chat);
     }
 
     @Override

@@ -32,7 +32,9 @@ import butterknife.OnClick;
  * Description: Activity for the main screen of application.
  * Handles {@link android.support.v4.app.Fragment} related to the {@link BottomNavigationView}.
  */
-public class MainActivity extends BaseActivity implements MainContract.View, BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements MainContract.View,
+        BottomNavigationView.OnNavigationItemSelectedListener,
+        ViewPager.OnPageChangeListener {
 
     @BindView(R.id.bottomNavView) BottomNavigationView bottomNavView;
     @BindView(R.id.viewpager) NonSwipeableViewPager viewPager;
@@ -52,35 +54,14 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         presenter.attach(this);
-
         setupToolbar();
         setupBottomNavigation();
         setupViewPager();
-
-        if (savedInstanceState == null) {
-            //presenter.navigateToModules();
-        }
     }
 
     private void setupViewPager() {
         viewPager.setAdapter(pagerAdapter);
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                presenter.handleSwitch(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
+        viewPager.addOnPageChangeListener(this);
     }
 
     @Override
@@ -157,12 +138,27 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
     @Override
     public void showEnrollDialog() {
         new MaterialDialog.Builder(this)
-                .title("Module Enrollment")
-                .content("Content")
+                .title(R.string.enrollment_module_dialog_title)
+                .content(R.string.enrollment_module_dialog_message)
                 .cancelable(true)
                 .inputType(InputType.TYPE_CLASS_TEXT)
-                .input("SET10101", null, false, (dialog, input) -> {
+                .input(getString(R.string.enrollment_module_dialog_hint), null, false, (dialog, input) -> {
                     presenter.enrollOnModule(input);
                 }).show();
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        presenter.handleSwitch(position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }

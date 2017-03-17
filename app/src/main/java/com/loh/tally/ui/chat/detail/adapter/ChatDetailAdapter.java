@@ -13,7 +13,6 @@ import javax.inject.Inject;
  * File: ChatDetailAdapter.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class ChatDetailAdapter extends FirebaseRecyclerAdapter<ChatMessage, ChatDetailViewHolder> {

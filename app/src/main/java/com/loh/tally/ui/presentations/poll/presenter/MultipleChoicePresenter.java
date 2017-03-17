@@ -19,7 +19,6 @@ import javax.inject.Inject;
  * File: MultipleChoicePresenter.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class MultipleChoicePresenter extends BasePresenter<MultipleChoiceContract.View> implements MultipleChoiceContract.Presenter {

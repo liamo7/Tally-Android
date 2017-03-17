@@ -3,6 +3,8 @@ package com.loh.tally.ui.chat.list.presenter;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 
+import javax.inject.Inject;
+
 /**
  * File: ChatListPresenter.java
  * Date: 10/03/2017
@@ -13,6 +15,7 @@ import com.loh.tally.ui.base.presenter.BasePresenter;
 @ViewScope
 public class ChatListPresenter extends BasePresenter<ChatListContract.View> implements ChatListContract.Presenter {
 
+    @Inject
     public ChatListPresenter() {
     }
 }

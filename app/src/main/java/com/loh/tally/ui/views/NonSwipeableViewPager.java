@@ -9,7 +9,6 @@ import android.view.MotionEvent;
  * File: NonSwipeableViewPager.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 public class NonSwipeableViewPager extends ViewPager {
 

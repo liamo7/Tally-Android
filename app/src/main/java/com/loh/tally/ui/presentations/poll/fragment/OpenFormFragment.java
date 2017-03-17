@@ -26,9 +26,7 @@ import butterknife.OnClick;
  * File: OpenFormFragment.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class OpenFormFragment extends PollFragment implements OpenFormContract.View {
 
     @BindView(R.id.question) TextView question;
@@ -84,7 +82,7 @@ public class OpenFormFragment extends PollFragment implements OpenFormContract.V
         String message = input.getText().toString();
 
         if (getPoll().isProfanityFilter()) {
-            return profanityChecker.check(message);
+            return profanityChecker.replace(message);
         }
 
         return message;
@@ -121,9 +119,7 @@ public class OpenFormFragment extends PollFragment implements OpenFormContract.V
     }
 
     private void setupPoll() {
-        Poll poll = getPoll();
-        question.setText(poll.getQuestion());
-
+        question.setText(getPoll().getQuestion());
     }
 
     @OnClick(R.id.sendBtn)

@@ -6,7 +6,6 @@ import com.loh.tally.ui.base.presenter.BaseContract;
  * File: PresentationContract.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 public interface PresentationContract {
 

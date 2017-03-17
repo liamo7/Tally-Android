@@ -6,6 +6,8 @@ import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 import com.loh.tally.ui.main.adapter.MainPagerAdapter;
 
+import javax.inject.Inject;
+
 /**
  * File: MainPresenter.java
  * Date: 10/03/2017
@@ -18,6 +20,7 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
     private final AuthenticationManager authenticationManager;
     private final ModuleService moduleService;
 
+    @Inject
     public MainPresenter(AuthenticationManager authenticationManager, ModuleService moduleService) {
         this.authenticationManager = authenticationManager;
         this.moduleService = moduleService;

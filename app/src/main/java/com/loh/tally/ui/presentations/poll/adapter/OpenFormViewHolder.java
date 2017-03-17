@@ -13,9 +13,7 @@ import butterknife.ButterKnife;
  * File: OpenFormViewHolder.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class OpenFormViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.formMessage) TextView formMessage;

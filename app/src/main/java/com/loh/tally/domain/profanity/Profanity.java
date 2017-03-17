@@ -4,7 +4,6 @@ package com.loh.tally.domain.profanity;
  * File: Profanity.java
  * Date: 14/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 
 public class Profanity {

@@ -6,11 +6,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.loh.tally.domain.model.User;
 import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
 
+import javax.inject.Inject;
+
 /**
  * File: UserServiceImpl.java
  * Date: 10/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ApplicationScope
 public class UserServiceImpl implements UserService {
@@ -20,6 +21,7 @@ public class UserServiceImpl implements UserService {
     private final FirebaseDatabase firebaseDatabase;
     private final DatabaseReference rootUserRef;
 
+    @Inject
     public UserServiceImpl(FirebaseDatabase firebaseDatabase) {
         this.firebaseDatabase = firebaseDatabase;
         this.rootUserRef = firebaseDatabase.getReference(REF_USER);

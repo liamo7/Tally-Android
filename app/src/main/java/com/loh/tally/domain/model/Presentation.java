@@ -4,9 +4,7 @@ package com.loh.tally.domain.model;
  * File: Presentation.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class Presentation {
 
     private String id;

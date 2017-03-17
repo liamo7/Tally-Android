@@ -12,9 +12,6 @@ import com.loh.tally.util.IntentUtil;
 
 public class ChatActivity extends BaseActivity {
 
-    // TODO: 13/03/2017 Pass chat id to activity from poll activity
-    // start fragment passing in the chat id
-
     public static Intent getStartingIntent(Context context, Bundle bundle) {
         Intent intent = new Intent(context, ChatActivity.class);
         intent.putExtra(IntentUtil.BUNDLE_KEY, bundle);
@@ -26,7 +23,6 @@ public class ChatActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         setupBackToolbar();
-
         loadChatFragment();
     }
 
@@ -50,5 +46,4 @@ public class ChatActivity extends BaseActivity {
                 .replace(R.id.frameContainer, ChatDetailFragment.newInstance(getModuleKey()), "TAG")
                 .commit();
     }
-
 }

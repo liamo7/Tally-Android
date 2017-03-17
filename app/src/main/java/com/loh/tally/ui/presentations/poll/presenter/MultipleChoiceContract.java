@@ -10,9 +10,7 @@ import java.util.List;
  * File: MultipleChoiceContract.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public interface MultipleChoiceContract {
 
     interface View extends BaseContract.ListView {
@@ -24,8 +22,6 @@ public interface MultipleChoiceContract {
         String getUserID();
 
         boolean canRespond();
-
-        void setSelectedColor(int position);
 
         void showCastMessage();
     }

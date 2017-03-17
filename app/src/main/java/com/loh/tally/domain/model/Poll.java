@@ -10,9 +10,7 @@ import java.util.List;
  * File: Poll.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class Poll implements Parcelable {
 
     private String id;

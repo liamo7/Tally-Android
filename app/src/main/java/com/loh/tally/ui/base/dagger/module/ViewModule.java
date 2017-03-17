@@ -155,8 +155,8 @@ public class ViewModule {
 
     @Provides
     @ViewScope
-    public PollContract.Presenter providePollPresenter(PresentationService presentationService, Bus bus) {
-        return new PollPresenter(presentationService, bus);
+    public PollContract.Presenter providePollPresenter(PresentationService presentationService) {
+        return new PollPresenter(presentationService);
     }
 
     @Provides

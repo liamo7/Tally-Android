@@ -9,9 +9,7 @@ import android.os.Bundle;
  * File: ActivityLifecycleCallback.java
  * Date: 14/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
-
 public class ActivityLifecycleCallback implements Application.ActivityLifecycleCallbacks {
 
     public ActivityLifecycleCallback() {

@@ -11,11 +11,12 @@ import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * File: MultipleChoiceAdapter.java
  * Date: 12/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 @ViewScope
 public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceViewHolder> {
@@ -23,7 +24,7 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceVi
     private List<String> responses = Collections.emptyList();
     private OnResponseClickListener listener;
 
-    @ViewScope
+    @Inject
     public MultipleChoiceAdapter() {
 
     }

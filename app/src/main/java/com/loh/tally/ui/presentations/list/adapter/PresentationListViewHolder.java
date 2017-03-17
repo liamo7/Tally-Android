@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
  * File: PresentationListViewHolder.java
  * Date: 11/03/2017
  * Created By: Liam O'Hanlon
- * Description: TODO:
  */
 public class PresentationListViewHolder extends RecyclerView.ViewHolder {
 
