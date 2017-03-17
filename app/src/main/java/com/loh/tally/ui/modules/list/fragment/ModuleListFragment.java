@@ -6,9 +6,12 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.loh.tally.R;
 import com.loh.tally.domain.model.Module;
+import com.loh.tally.ui.base.EmptyListStateListener;
 import com.loh.tally.ui.base.fragment.BaseFragment;
 import com.loh.tally.ui.modules.list.adapter.ModuleListAdapter;
 import com.loh.tally.ui.modules.list.adapter.ModuleViewHolder;
@@ -27,9 +30,13 @@ import butterknife.BindView;
  * Created By: Liam O'Hanlon
  * Description: Handles the displaying of modules to the user.
  */
-public class ModuleListFragment extends BaseFragment implements ModuleListContract.View, ModuleViewHolder.OnModuleItemClickListener {
+public class ModuleListFragment extends BaseFragment implements ModuleListContract.View,
+        ModuleViewHolder.OnModuleItemClickListener,
+        EmptyListStateListener {
 
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
+    @BindView(R.id.emptyContainer) ViewGroup emptyContainer;
+    @BindView(R.id.emptyMessage) TextView emptyMessage;
 
     @Inject ModuleListContract.Presenter presenter;
     @Inject ModuleListAdapter listAdapter;
@@ -77,6 +84,7 @@ public class ModuleListFragment extends BaseFragment implements ModuleListContra
 
     private void setupRecycler() {
         listAdapter.setOnItemClickListener(this);
+        listAdapter.setEmptyListStateListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(listAdapter);
@@ -96,5 +104,11 @@ public class ModuleListFragment extends BaseFragment implements ModuleListContra
         bundle.putString(IntentUtil.INTENT_MODULE_KEY, moduleID);
         bundle.putInt(IntentUtil.INTENT_PRESENTATION_PAGE, PresentationPagerAdapter.FRAGMENT_CHAT);
         startActivity(PresentationActivity.getStartingIntent(getActivity(), bundle));
+    }
+
+    @Override
+    public void onEmpty() {
+        emptyContainer.setVisibility(listAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+        emptyMessage.setText(R.string.empty_module_list);
     }
 }

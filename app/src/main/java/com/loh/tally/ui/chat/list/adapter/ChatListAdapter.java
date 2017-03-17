@@ -9,6 +9,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.loh.tally.R;
 import com.loh.tally.domain.model.ChatMessage;
 import com.loh.tally.domain.model.Module;
+import com.loh.tally.ui.base.EmptyListStateListener;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 
 import javax.inject.Inject;
@@ -22,6 +23,7 @@ import javax.inject.Inject;
 public class ChatListAdapter extends FirebaseRecyclerAdapter<Module, ChatListViewHolder> {
 
     private OnChatListItemClickedListener listener;
+    private EmptyListStateListener emptyListStateListener;
 
     private DatabaseReference createdRef;
     private DatabaseReference chatRef;
@@ -65,8 +67,18 @@ public class ChatListAdapter extends FirebaseRecyclerAdapter<Module, ChatListVie
         viewHolder.bind(model, listener);
     }
 
+    @Override
+    protected void onDataChanged() {
+        super.onDataChanged();
+        emptyListStateListener.onEmpty();
+    }
+
     public void setOnChatListItemClickedListener(OnChatListItemClickedListener listener) {
         this.listener = listener;
+    }
+
+    public void setEmptyListStateListener(EmptyListStateListener emptyListStateListener) {
+        this.emptyListStateListener = emptyListStateListener;
     }
 
     public interface OnChatListItemClickedListener {

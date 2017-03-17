@@ -6,9 +6,12 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.loh.tally.R;
 import com.loh.tally.domain.model.Module;
+import com.loh.tally.ui.base.EmptyListStateListener;
 import com.loh.tally.ui.base.fragment.BaseFragment;
 import com.loh.tally.ui.chat.list.adapter.ChatListAdapter;
 import com.loh.tally.ui.chat.list.presenter.ChatListContract;
@@ -26,9 +29,11 @@ import butterknife.BindView;
  * Created By: Liam O'Hanlon
  * Description: Handles the displaying of chats to the user.
  */
-public class ChatListFragment extends BaseFragment implements ChatListContract.View, ChatListAdapter.OnChatListItemClickedListener {
+public class ChatListFragment extends BaseFragment implements ChatListContract.View, ChatListAdapter.OnChatListItemClickedListener, EmptyListStateListener {
 
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
+    @BindView(R.id.emptyContainer) ViewGroup emptyContainer;
+    @BindView(R.id.emptyMessage) TextView emptyMessage;
 
     @Inject ChatListContract.Presenter presenter;
     @Inject ChatListAdapter listAdapter;
@@ -49,6 +54,7 @@ public class ChatListFragment extends BaseFragment implements ChatListContract.V
 
     private void setupRecycler() {
         listAdapter.setOnChatListItemClickedListener(this);
+        listAdapter.setEmptyListStateListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(listAdapter);
@@ -76,5 +82,11 @@ public class ChatListFragment extends BaseFragment implements ChatListContract.V
         bundle.putString(IntentUtil.INTENT_MODULE_KEY, module.getId());
         bundle.putInt(IntentUtil.INTENT_PRESENTATION_PAGE, PresentationPagerAdapter.FRAGMENT_CHAT);
         startActivity(PresentationActivity.getStartingIntent(getActivity(), bundle));
+    }
+
+    @Override
+    public void onEmpty() {
+        emptyContainer.setVisibility(listAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+        emptyMessage.setText(R.string.empty_chat_list);
     }
 }

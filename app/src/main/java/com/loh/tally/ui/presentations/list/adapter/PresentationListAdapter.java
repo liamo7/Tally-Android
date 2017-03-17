@@ -5,6 +5,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.loh.tally.R;
 import com.loh.tally.domain.model.Presentation;
+import com.loh.tally.ui.base.EmptyListStateListener;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 
 import javax.inject.Inject;
@@ -18,6 +19,7 @@ import javax.inject.Inject;
 public class PresentationListAdapter extends FirebaseRecyclerAdapter<Presentation, PresentationListViewHolder> {
 
     private OnPresentationItemClickListener listener;
+    private EmptyListStateListener emptyStateListener;
 
     @Inject
     public PresentationListAdapter(DatabaseReference ref) {
@@ -42,8 +44,18 @@ public class PresentationListAdapter extends FirebaseRecyclerAdapter<Presentatio
         viewHolder.bind(model, listener);
     }
 
+    @Override
+    protected void onDataChanged() {
+        super.onDataChanged();
+        emptyStateListener.onEmpty();
+    }
+
     public void setOnPresentationClickListener(OnPresentationItemClickListener listener) {
         this.listener = listener;
+    }
+
+    public void setOnEmptyStateListener(EmptyListStateListener emptyStateListener) {
+        this.emptyStateListener = emptyStateListener;
     }
 
     public interface OnPresentationItemClickListener {

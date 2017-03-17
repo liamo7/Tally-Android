@@ -4,6 +4,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.Query;
 import com.loh.tally.R;
 import com.loh.tally.domain.model.Module;
+import com.loh.tally.ui.base.EmptyListStateListener;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 
 import javax.inject.Inject;
@@ -17,6 +18,7 @@ import javax.inject.Inject;
 public class ModuleListAdapter extends FirebaseRecyclerAdapter<Module, ModuleViewHolder> {
 
     private ModuleViewHolder.OnModuleItemClickListener listener;
+    private EmptyListStateListener emptyListStateListener;
 
     @Inject
     public ModuleListAdapter(Query ref) {
@@ -40,7 +42,17 @@ public class ModuleListAdapter extends FirebaseRecyclerAdapter<Module, ModuleVie
         viewHolder.bind(model, listener);
     }
 
+    @Override
+    protected void onDataChanged() {
+        super.onDataChanged();
+        emptyListStateListener.onEmpty();
+    }
+
     public void setOnItemClickListener(ModuleViewHolder.OnModuleItemClickListener listener) {
         this.listener = listener;
+    }
+
+    public void setEmptyListStateListener(EmptyListStateListener emptyListStateListener) {
+        this.emptyListStateListener = emptyListStateListener;
     }
 }

@@ -11,4 +11,8 @@
     <dimen name="authentication_pager_height">250dp</dimen>
     <dimen name="authentication_logo_title_margin_top">72dp</dimen>
     <dimen name="authentication_logo_text_size">42sp</dimen>
+    <dimen name="empty_image_width">125dp</dimen>
+    <dimen name="empty_image_height">125dp</dimen>
+    <dimen name="empty_text_padding">30dp</dimen>
+    <dimen name="empty_text_size">22sp</dimen>
 </resources>

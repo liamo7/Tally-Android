@@ -28,4 +28,7 @@
     <string name="enrollment_module_dialog_hint">SET10101</string>
     <string name="title_presentations">Presentations</string>
     <string name="title_chat">Chat</string>
+    <string name="empty_presentations">There are no presentations currently available.</string>
+    <string name="empty_module_list">You are not currently enrolled upon any modules.</string>
+    <string name="empty_chat_list">There are no chats available.</string>
 </resources>
