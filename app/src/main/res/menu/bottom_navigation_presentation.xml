@@ -6,17 +6,17 @@
         android:enabled="true"
         android:icon="@drawable/ic_presentation"
         android:title="@string/bottom_nav_presentations"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_chat"
         android:enabled="true"
         android:icon="@drawable/ic_chat"
         android:title="@string/bottom_nav_chat"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_logout"
         android:enabled="true"
         android:icon="@drawable/ic_logout"
         android:title="@string/bottom_nav_logout"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"/>
 </menu>

@@ -21,6 +21,10 @@ public interface MainContract {
         void hideEnrollFab();
 
         void showEnrollDialog();
+
+        void showSuccesfulEnrollmentMessage();
+
+        void showFailureEnrollmentMessage();
     }
 
     interface Presenter extends BaseContract.Presenter<View> {

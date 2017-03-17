@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.text.InputType;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loh.tally.R;
@@ -36,6 +38,7 @@ public class MainActivity extends BaseActivity implements MainContract.View,
         BottomNavigationView.OnNavigationItemSelectedListener,
         ViewPager.OnPageChangeListener {
 
+    @BindView(R.id.container) ViewGroup container;
     @BindView(R.id.bottomNavView) BottomNavigationView bottomNavView;
     @BindView(R.id.viewpager) NonSwipeableViewPager viewPager;
     @BindView(R.id.enrollFab) FloatingActionButton enrollFab;
@@ -148,8 +151,17 @@ public class MainActivity extends BaseActivity implements MainContract.View,
     }
 
     @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    public void showSuccesfulEnrollmentMessage() {
+        Snackbar.make(container, R.string.enrollment_success_message, Snackbar.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void showFailureEnrollmentMessage() {
+        Snackbar.make(container, R.string.enrollment_failure_message, Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.loh.tally.domain.model.Module;
+import com.loh.tally.ui.base.AsyncCallback;
 import com.loh.tally.ui.base.dagger.scope.ApplicationScope;
 
 import javax.inject.Inject;
@@ -45,22 +46,31 @@ public class ModuleServiceImpl implements ModuleService {
     }
 
     @Override
-    public void enrollOnModule(String moduleID, String userID) {
+    public void enrollOnModule(String moduleID, String userID, AsyncCallback<Boolean> callback) {
         moduleReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean enrolled = false;
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Module module = snapshot.getValue(Module.class);
                     module.setId(snapshot.getKey());
                     if (module.getCode().equalsIgnoreCase(moduleID)) {
                         enroll(module, userID);
+                        enrolled = true;
+                        callback.onSuccess(true);
+                        break;
                     }
+                }
+
+                if (!enrolled) {
+                    callback.onError("");
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                callback.onError(databaseError.getMessage());
             }
         });
     }

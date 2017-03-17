@@ -13,8 +13,8 @@
     <string name="chat_list_last_message">Last Message: %1$s</string>
     <string name="pretty_time_soon">Soon</string>
     <string name="pretty_time_one_hour">an hour ago</string>
-    <string name="title_activity_presentation">Presentations</string>
-    <string name="bottom_nav_presentations">Presentations</string>
+    <string name="title_activity_presentation">Topics</string>
+    <string name="bottom_nav_presentations">Topics</string>
     <string name="bottom_nav_chat">Chat</string>
     <string name="number_of_polls">Number of Polls: %1$s</string>
     <string name="btn_send">Send</string>
@@ -26,9 +26,11 @@
     <string name="enrollment_module_dialog_title">Module Enrollment</string>
     <string name="enrollment_module_dialog_message">Enter a module code</string>
     <string name="enrollment_module_dialog_hint">SET10101</string>
-    <string name="title_presentations">Presentations</string>
+    <string name="title_presentations">Topics</string>
     <string name="title_chat">Chat</string>
-    <string name="empty_presentations">There are no presentations currently available.</string>
+    <string name="empty_presentations">There are no topics currently available.</string>
     <string name="empty_module_list">You are not currently enrolled upon any modules.</string>
     <string name="empty_chat_list">There are no chats available.</string>
+    <string name="enrollment_success_message">You have successfully enrolled.</string>
+    <string name="enrollment_failure_message">The module code you have entered is incorrect. Please try again.</string>
 </resources>

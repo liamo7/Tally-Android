@@ -2,6 +2,7 @@ package com.loh.tally.ui.main.presenter;
 
 import com.loh.tally.domain.authentication.AuthenticationManager;
 import com.loh.tally.domain.database.modules.ModuleService;
+import com.loh.tally.ui.base.AsyncCallback;
 import com.loh.tally.ui.base.dagger.scope.ViewScope;
 import com.loh.tally.ui.base.presenter.BasePresenter;
 import com.loh.tally.ui.main.adapter.MainPagerAdapter;
@@ -58,6 +59,18 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
     @Override
     public void enrollOnModule(CharSequence input) {
         String moduleID = input.toString();
-        moduleService.enrollOnModule(moduleID, authenticationManager.getCurrentUser().getUid());
+        moduleService.enrollOnModule(moduleID, authenticationManager.getCurrentUser().getUid(), new AsyncCallback<Boolean>() {
+            @Override
+            public void onSuccess(Boolean model) {
+                if (model) {
+                    getView().showSuccesfulEnrollmentMessage();
+                }
+            }
+
+            @Override
+            public void onError(String message) {
+                getView().showFailureEnrollmentMessage();
+            }
+        });
     }
 }
