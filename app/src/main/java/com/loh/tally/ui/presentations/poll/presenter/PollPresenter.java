@@ -75,6 +75,4 @@ public class PollPresenter extends BasePresenter<PollContract.View> implements P
         });
 
     }
-
-
 }

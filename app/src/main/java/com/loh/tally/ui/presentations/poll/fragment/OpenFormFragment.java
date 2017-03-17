@@ -64,6 +64,12 @@ public class OpenFormFragment extends PollFragment implements OpenFormContract.V
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        adapter.cleanup();
+    }
+
+    @Override
     protected void inject() {
         getViewComponent().inject(this);
     }

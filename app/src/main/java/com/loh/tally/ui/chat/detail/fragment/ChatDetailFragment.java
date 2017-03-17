@@ -77,6 +77,12 @@ public class ChatDetailFragment extends BaseFragment implements ChatDetailContra
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        chatAdapter.cleanup();
+    }
+
+    @Override
     protected void inject() {
         getViewComponent().inject(this);
     }

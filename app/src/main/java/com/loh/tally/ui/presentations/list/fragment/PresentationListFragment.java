@@ -63,6 +63,12 @@ public class PresentationListFragment extends BaseFragment implements Presentati
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        listAdapter.cleanup();
+    }
+
+    @Override
     protected void inject() {
         getViewComponent().inject(this);
     }

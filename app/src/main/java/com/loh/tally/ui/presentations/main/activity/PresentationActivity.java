@@ -26,7 +26,7 @@ public class PresentationActivity extends BaseActivity implements PresentationCo
     @BindView(R.id.bottomNavView) BottomNavigationView bottomNavView;
 
     @Inject PresentationContract.Presenter presenter;
-    @Inject PresentationPagerAdapter listAdapter;
+    @Inject PresentationPagerAdapter pagerAdapter;
 
     public static Intent getStartingIntent(Context context, Bundle bundle) {
         Intent intent = new Intent(context, PresentationActivity.class);
@@ -62,7 +62,7 @@ public class PresentationActivity extends BaseActivity implements PresentationCo
     }
 
     private void setupViewpager() {
-        viewPager.setAdapter(listAdapter);
+        viewPager.setAdapter(pagerAdapter);
         handlePage();
     }
 
