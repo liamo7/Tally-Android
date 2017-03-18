@@ -33,6 +33,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support:design:25.2.0'
     testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.+'
 
     // view injection
     compile 'com.jakewharton:butterknife:8.4.0'
